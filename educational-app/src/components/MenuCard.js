@@ -11,10 +11,8 @@ const MenuCard = ({ imageURL, rating, upvote, downvote , title, author, text, bo
             <img src={imageURL} className='img'/>
             <div className='topHalf'>
                 <Bookmark showBookmark = {bookmarkStatus} onClick = {onBookmarkClick}/>
-                <div className='votes'>
                     <Upvote onClick = {upvote}/>
-                    <Downvote className='downvote' onClick = {downvote}/>
-                </div>
+                    <Downvote onClick = {downvote}/>
                 <p>{rating}</p>
             </div>
             <h2>{title}</h2>

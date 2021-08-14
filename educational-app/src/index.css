@@ -25,6 +25,11 @@ button {
 }
 
 .upvote {
-  height: 100px;
-  width: 100px;
+  width: 10%;
+  height: 10%;
+}
+
+.downvote {
+  width: 10%;
+  height: 10%;
 }
