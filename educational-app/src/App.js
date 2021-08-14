@@ -16,17 +16,19 @@ return(
   <Router>
   
     <Route exact path="/">
-      <div>
-        <MenuCard />
-        <a href="/test">Test</a>
-      </div>
+      <MenuCard />
+      <a href="/test">Test</a>
     </Route>
   
+    <Route exact path="/coursecreation">
+      <CourseCreationPage/>
+    </Route>
+
     <Route exact path="/page/:page_id">
-      <button onClick={Page}>bruh</button>
+      
     </Route>
   
-    </Router>
+  </Router>
 )}
 
 export default App;
