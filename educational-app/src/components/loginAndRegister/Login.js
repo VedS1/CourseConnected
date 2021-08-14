@@ -1,10 +1,14 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
     //States
+    let history = useHistory();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const loginUser = (event) =>{
         event.preventDefault();
         axios.post("http://localhost:3001/login", {
@@ -14,10 +18,11 @@ const Login = () => {
         .then(response => {
            if(response.data.length==0)
            {
-               //route to failed page
+                console.log("test")
+                
            }
            else{
-                //route to dashboard
+                console.log("test2")
            }
         });};
     return (
