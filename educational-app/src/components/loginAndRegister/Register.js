@@ -7,10 +7,22 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
 
+
+    const registerUser = (event) =>{
+        event.preventDefault();
+        axios.post("http://localhost:3001/register", {
+            username: name,
+            password:password,
+            email: email,
+        })
+        .then(response => {
+            console.log(response);
+        });};
+
     return (
         <div>
             <h1>Register</h1>
-            <form className='add-form' onSubmit={console.log("hi")}>
+            <form className='add-form' onSubmit={registerUser}>
                 <div className='form-control'>
                 <label>Name</label>
                     <input type='text' placeholder = 'Add Full Name' value={name} onChange={(e) => setName(e.target.value)}/>

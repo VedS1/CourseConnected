@@ -5,13 +5,24 @@ const app = express();
 
 
 const CourseModel = require("./models/Course");
-
+const UserModel = require("./models/User")
 
 app.use(express.json());
 app.use(cors());
 
-moongose.connect("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/course?retryWrites=true&w=majority", {useNewUrlParser:true});
-
+app.post('/register', async (req, res) =>{//authenticating and fetching user login from frontend
+    const username = req.body.username;
+    const password = req.body.password;
+    const email = req.body.email;
+    const user = new UserModel({username: username, password: password, email: email});
+    try
+    {
+        await user.save();
+        res.send("registered user");
+    }catch(err){
+        console.log(err);
+    }
+});
 
 app.post("/insert", async (req, res)=>{ // fetching data from frontend
     const title = req.body.title; 
