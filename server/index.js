@@ -14,7 +14,6 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
     const username = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
-    const key = Math.floor(Math.random() * 10000000)+1
     UserModel.find({email: email}, (err, result) =>{
         if(result==0)
         {

@@ -17,10 +17,13 @@ const Login = () => {
         .then(response => {
            if(response.data.length==0)
            {
+
             history.push("/login-failed")
                 
            }
            else{
+            const id = response.data.shift();
+            window.localStorage.setItem('token', JSON.stringify(id_.id));
             history.push("/your-courses")
            }
         });};

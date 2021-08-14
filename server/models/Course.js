@@ -1,6 +1,10 @@
 const mongoose = require ("mongoose");
 
 const CourseSchema = new mongoose.Schema({
+    rating:{
+        type: Number,
+        required: false,
+    },
    title: {
        type: String,
        required: false,
@@ -33,7 +37,7 @@ const CourseSchema = new mongoose.Schema({
 });
 
 
-courseDb = mongoose.createConnection("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/course?retryWrites=true&w=majority", {useNewUrlParser:true});
 
-const Course = courseDb.model("Course", CourseSchema);
+
+const Course = mongoose.model("Course", CourseSchema);
 module.exports = Course;
