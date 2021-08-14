@@ -1,8 +1,11 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
     //States
+    let history = useHistory();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -18,10 +21,10 @@ const Login = () => {
         .then(response => {
             if(response.data)
             {
-                //route to login page(successful registration)
+                history.push("/login")
             }
             else{
-                // route to failed registration page
+                history.push("/registration-failed")
             }
         });};
 

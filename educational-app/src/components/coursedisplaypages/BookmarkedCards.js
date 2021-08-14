@@ -3,7 +3,9 @@ import CardLoader from "./CardLoader"
 
 const BookmarkedCards = () => {
     const getUserToken = () => {
-        
+        const userToken = window.localStorage.getItem('token')
+        console.log(userToken)
+        return userToken
     }
     
     const idList = [11111,11112,11113,1,1,1,1,1,1,1,1]
