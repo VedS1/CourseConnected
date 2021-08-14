@@ -1,12 +1,12 @@
 import React from 'react'
-import MenuCard from './components/MenuCard';
 import { useState, useEffect } from 'react';
+import CourseCreationPage from './components/coursecreation/CourseCreationPage';
 
 const App = () => {
   
   return(
     <div>
-      <MenuCard />
+      <CourseCreationPage/>
     </div>
   )
 }

@@ -3,19 +3,19 @@ const moongose = require ("mongoose");
 const app = express();
 
 
-const LoginModel = require("./models/Login");
+const CourseModel = require("./models/Course");
 
 
 app.use(express.json());
 
-moongose.connect("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/login?retryWrites=true&w=majority", {useNewUrlParser:true});
+moongose.connect("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/course?retryWrites=true&w=majority", {useNewUrlParser:true});
 
 
 app.get("/", async (req, res)=>{
-    const login = new LoginModel({userName: "FirstUsername", password: "FirstPassword"});
+    const course = new CourseModel({userName: "FirstUsername", password: "FirstPassword"});
     try
     {
-        await login.save();
+        await course.save();
         res.send("inserted data");
 
     }catch(err){

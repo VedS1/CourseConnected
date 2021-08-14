@@ -1,6 +1,6 @@
 const mongoose = require ("mongoose");
 
-const LoginSchema = new mongoose.Schema({
+const CourseSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: false,
@@ -39,5 +39,5 @@ const LoginSchema = new mongoose.Schema({
 
 
 
-const Login = mongoose.model("Login", LoginSchema);
-module.exports = Login;
+const Course = mongoose.model("Course", CourseSchema);
+module.exports = Course;
