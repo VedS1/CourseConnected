@@ -5,7 +5,7 @@ const Downvote = ({ onClick }) => {
     return (
         <div>
             <button className='downvote' onClick={onClick}>
-                <img src= {downvote} alt= 'icon' />
+            <img className='upvote' src={(downvote)} alt="icon" />
             </button>
         </div>
     )
