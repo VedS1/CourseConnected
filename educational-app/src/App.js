@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuCard from './components/MenuCard';
+import MenuCard from './components/menucards/MenuCard';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
 
