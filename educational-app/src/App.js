@@ -17,7 +17,27 @@ return(
   
     <Route exact path="/">
       <MenuCard />
-      <a href="/test">Test</a>
+      <a href="/coursecreation">Test</a>
+    </Route>
+
+    <Route exact path="/yourcourses">
+      <h1>YOUR COURSES GOES HERE</h1>
+    </Route>
+
+    <Route exact path="/popularcourses">
+      <h1>POPULAR COURSES GOES HERE</h1>
+    </Route>
+
+    <Route exact path="/bookmarked">
+      <h1>BOOKMARKED COURSES GOES HERE</h1>
+    </Route>
+
+    <Route exact path="/login">
+      <h1>LOGIN PAGE GOES HERE</h1>
+    </Route>
+
+    <Route exact path="/registration">
+      <h1>REGISTRATION PAGE GOES HERE</h1>
     </Route>
   
     <Route exact path="/coursecreation">
@@ -25,7 +45,7 @@ return(
     </Route>
 
     <Route exact path="/page/:page_id">
-      
+      <h1>COURSE MAIN PAGE GOES HERE</h1>
     </Route>
   
   </Router>
