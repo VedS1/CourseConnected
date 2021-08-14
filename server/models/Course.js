@@ -29,6 +29,10 @@ const CourseSchema = new mongoose.Schema({
        type: String,
        required: true,
    },
+   unit: {
+       type: Array, Object,
+       required: true,
+   }
 
 });
 

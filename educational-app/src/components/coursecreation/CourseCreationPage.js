@@ -11,6 +11,70 @@ const CourseCreationPage = () => {
     const [level, setLevel] = useState(5);
     const [dateOfCreate, setDateOfCreate] = useState("");
     
+    const unitOne = [
+        { 
+          "id": 1,
+          "name": "Unit 1: Limits",
+          "contents": [
+            {
+              "id": 1,
+              "type": "youtube",
+              "description": "Description of youtube video",
+              "data": "https://www.youtube.com/watch?v=xhKf7v2FU_g"
+            },
+            {
+              "id": 2,
+              "type": "link",
+              "description": "Description of link",
+              "data": "https://www.mathsisfun.com/calculus/limits-evaluating.html"
+            },
+            {
+              "id": 3,
+              "type": "text",
+              "description": "Description of the text",
+              "data": "Limits are basically the value a graph approaches from either side of the point. They can be estimated and evaluated to help us make calculations and assumptions in calculus."
+            },
+            {
+              "id": 4,
+              "type": "image",
+              "description": "Description of the user inputted image",
+              "data": "https://www.mathsisfun.com/calculus/images/discontinuous-function.svg"
+            }
+          ]
+        }];
+
+        const unitTwo = [
+            { 
+              "id": 3,
+              "name": "Unit 3: Aditya Shell",
+              "contents": [
+                {
+                  "id": 1,
+                  "type": "youtube",
+                  "description": "Description of youtube video",
+                  "data": "https://www.youtube.com/watch?v=xhKf7v2FU_g"
+                },
+                {
+                  "id": 2,
+                  "type": "link",
+                  "description": "Description of link",
+                  "data": "https://www.mathsisfun.com/calculus/limits-evaluating.html"
+                },
+                {
+                  "id": 3,
+                  "type": "text",
+                  "description": "Description of the text",
+                  "data": "Limits are basically the value a graph approaches from either side of the point. They can be estimated and evaluated to help us make calculations and assumptions in calculus."
+                },
+                {
+                  "id": 4,
+                  "type": "image",
+                  "description": "Description of the user inputted image",
+                  "data": "https://www.mathsisfun.com/calculus/images/discontinuous-function.svg"
+                }
+              ]
+            }];
+
     const addToDB = (event) =>{
         event.preventDefault();
         axios.post("http://localhost:3001/insert", {
@@ -21,6 +85,7 @@ const CourseCreationPage = () => {
             description: description,
             level: level,
             dateOfCreate: dateOfCreate,
+            unit: {unitOne, unitTwo},
         })
         .then(response => {
             console.log(response);
