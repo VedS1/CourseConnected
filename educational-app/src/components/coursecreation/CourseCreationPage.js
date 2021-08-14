@@ -1,4 +1,4 @@
-import Axios from "axios"
+import axios from "axios"
 import { useState, useEffect } from 'react';
 
 const CourseCreationPage = () => {
@@ -11,8 +11,9 @@ const CourseCreationPage = () => {
     const [level, setLevel] = useState(5);
     const [dateOfCreate, setDateOfCreate] = useState("");
     
-    const addToDB = () =>{
-        Axios.post("https://localhost:3001/insert", {
+    const addToDB = (event) =>{
+        event.preventDefault();
+        axios.post("http://localhost:3001/insert", {
             id: id,
             title: title,
             subject: subject,
@@ -20,7 +21,11 @@ const CourseCreationPage = () => {
             description: description,
             level: level,
             dateOfCreate: dateOfCreate,
-        })}
+        })
+        .then(response => {
+            console.log(response);
+        });};
+
     
 
     return (
