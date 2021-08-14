@@ -16,7 +16,13 @@ const Login = () => {
             email: email,
         })
         .then(response => {
-            console.log(response);
+            if(res)
+            {
+                //route to login page(successful registration)
+            }
+            else{
+                // route to failed registration page
+            }
         });};
 
     return (

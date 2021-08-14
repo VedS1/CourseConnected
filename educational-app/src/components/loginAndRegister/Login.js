@@ -12,7 +12,13 @@ const Login = () => {
             email: email,
         })
         .then(response => {
-            console.log(response);
+           if(response.data.length==0)
+           {
+               //route to failed page
+           }
+           else{
+                //route to dashboard
+           }
         });};
     return (
         <div>
