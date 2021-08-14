@@ -9,7 +9,6 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const loginUser = (event) =>{
-        event.preventDefault();
         axios.post("http://localhost:3001/login", {
             password:password,
             email: email,
