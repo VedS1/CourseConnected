@@ -23,7 +23,7 @@ const Login = () => {
            }
            else{
             const id = response.data.shift();
-            window.localStorage.setItem('token', JSON.stringify(id_.id));
+            window.localStorage.setItem('token', JSON.stringify(id._id));
             history.push("/your-courses")
            }
         });};
