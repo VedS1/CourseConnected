@@ -2,6 +2,7 @@ import React from 'react'
 import MenuCard from './components/menucards/MenuCard';
 import CourseCreationPage from './components/coursecreation/CourseCreationPage';
 import Login from './components/loginAndRegister/Login';
+import LoginError from './components/loginAndRegister/LoginError';
 import Register from './components/loginAndRegister/Register'
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
@@ -22,11 +23,11 @@ return(
       <a href="/coursecreation">Test</a>
     </Route>
 
-    <Route exact path="/yourcourses">
+    <Route exact path="/your-courses">
       <h1>YOUR COURSES GOES HERE</h1>
     </Route>
 
-    <Route exact path="/popularcourses">
+    <Route exact path="/popular-courses">
       <h1>POPULAR COURSES GOES HERE</h1>
     </Route>
 
@@ -42,7 +43,15 @@ return(
       <Register/>
     </Route>
   
-    <Route exact path="/coursecreation">
+    <Route exact path="/course-creation">
+      <CourseCreationPage/>
+    </Route>
+
+    <Route exact path="/login-failed">
+      <LoginError/>
+    </Route>
+
+    <Route exact path="/registration-failed">
       <CourseCreationPage/>
     </Route>
 
