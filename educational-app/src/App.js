@@ -9,6 +9,7 @@ const App = () => {
   return(
     <>
       <Register />
+      <Login />
     </>
   )
 }
