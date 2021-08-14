@@ -8,7 +8,6 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const loginUser = (event) =>{
         event.preventDefault();
         axios.post("http://localhost:3001/login", {
@@ -18,11 +17,11 @@ const Login = () => {
         .then(response => {
            if(response.data.length==0)
            {
-                console.log("test")
+            history.push("/login-failed")
                 
            }
            else{
-                console.log("test2")
+            history.push("/your-courses")
            }
         });};
     return (
@@ -35,14 +34,14 @@ const Login = () => {
                 </div>
                 <div className='form-control'>
                     <label>Password</label>
-                    <input type='text' placeholder = 'Add Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input type='password' placeholder = 'Add Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <input type = 'submit' value =  'Save Task' className='btn btn-block'></input>
             </form>
             <div>
                 <p>
                     Don't have an account already? 
-                    <a href="#">Register here</a>
+                    <a href="/registration">Register here</a>
                 </p>
             </div>
             <a href="#"></a>

@@ -16,7 +16,7 @@ const Login = () => {
             email: email,
         })
         .then(response => {
-            if(res)
+            if(response.data)
             {
                 //route to login page(successful registration)
             }
@@ -46,7 +46,7 @@ const Login = () => {
             <div>
                 <p>
                     Have an account already? 
-                    <a href="#">Login here</a>
+                    <a href="/login">Login here</a>
                 </p>
             </div>
         </div>
