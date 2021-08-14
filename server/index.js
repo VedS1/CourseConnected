@@ -11,7 +11,7 @@ app.use(express.json());
 moongose.connect("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/login?retryWrites=true&w=majority", {useNewUrlParser:true});
 
 
-app.get("/", async (req, res)=>{
+app.post("/insert", async (req, res)=>{
     const login = new LoginModel({userName: "FirstUsername", password: "FirstPassword"});
     try
     {
