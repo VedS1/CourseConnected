@@ -5,8 +5,10 @@ import Login from './components/loginAndRegister/Login';
 import LoginError from './components/loginAndRegister/LoginError';
 import Register from './components/loginAndRegister/Register'
 import RegisterError from './components/loginAndRegister/RegisterError';
+import MenuBar from './components/coursedisplaypages/MenuBar';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
+import BookmarkedCards from './components/coursedisplaypages/BookmarkedCards';
 
 //returns id when on url/page/id (Ask Aryan if you don't understand)
 const Page = () => {
@@ -20,8 +22,7 @@ return(
   <Router>
   
     <Route exact path="/">
-      <MenuCard />
-      <a href="/coursecreation">Test</a>
+      <BookmarkedCards/>
     </Route>
 
     <Route exact path="/your-courses">
@@ -33,7 +34,7 @@ return(
     </Route>
 
     <Route exact path="/bookmarked">
-      <h1>BOOKMARKED COURSES GOES HERE</h1>
+      <BookmarkedCards/>
     </Route>
 
     <Route exact path="/login">
