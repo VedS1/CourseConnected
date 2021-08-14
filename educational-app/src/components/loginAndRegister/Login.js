@@ -16,7 +16,7 @@ const Login = () => {
                 </div>
                 <div className='form-control'>
                     <label>Password</label>
-                    <input type='text' placeholder = 'Add Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input type='password' placeholder = 'Add Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <input type = 'submit' value =  'Login' className='btn btn-block'></input>
             </form>
