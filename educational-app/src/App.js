@@ -1,5 +1,6 @@
 import React from 'react'
 import MenuCard from './components/menucards/MenuCard';
+import CourseCreationPage from './components/coursecreation/CourseCreationPage';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
 
