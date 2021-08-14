@@ -4,6 +4,7 @@ import CourseCreationPage from './components/coursecreation/CourseCreationPage';
 import Login from './components/loginAndRegister/Login';
 import LoginError from './components/loginAndRegister/LoginError';
 import Register from './components/loginAndRegister/Register'
+import RegisterError from './components/loginAndRegister/RegisterError';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
 
@@ -52,7 +53,7 @@ return(
     </Route>
 
     <Route exact path="/registration-failed">
-      <CourseCreationPage/>
+      <RegisterError/>
     </Route>
 
     <Route exact path="/page/:page_id">
