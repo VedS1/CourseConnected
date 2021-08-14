@@ -43,6 +43,12 @@ const Login = () => {
                 </div>
                 <input type = 'submit' value =  'Register' className='btn btn-block'></input>
             </form>
+            <div>
+                <p>
+                    Have an account already? 
+                    <a href="#">Login here</a>
+                </p>
+            </div>
         </div>
     )
 }
