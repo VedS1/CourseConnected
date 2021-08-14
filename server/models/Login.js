@@ -1,14 +1,39 @@
 const mongoose = require ("mongoose");
 
 const LoginSchema = new mongoose.Schema({
-    userName: {
-        type: String,
-        required: true,
+    id: {
+        type: Number,
+        required: false,
     },
-    password: {
+    title: {
         type: String,
-        required: true,
+        required: false,
     },
+    subject: {
+        type: String,
+        required: false,
+    },
+    author: {
+        type: String,
+        required: false,
+    },
+    description: {
+        type: String,
+        required: false,
+    },
+    level: {
+        type: Number,
+        required: false,
+    },
+    dateOfCreate: {
+        type: String,
+        required: false,
+    },
+    unit: {
+        type: Object,
+        required: false,
+    },
+
 });
 
 
