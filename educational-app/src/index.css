@@ -19,17 +19,46 @@ button {
 
 .img {
   border-radius: 5em;
-  height: 50%;
+  height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
 .upvote {
-  width: 10%;
-  height: 10%;
+  width: 20%;
+  height: 20%;
 }
 
 .downvote {
-  width: 10%;
-  height: 10%;
+  width: 20%;
+  height: 20%;
+}
+
+.bookmarkImg {
+  width: 20%;
+  height: 20%;
+}
+
+.bottomHalf {
+  height: 50%;
+  border-radius: 5em;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+p {
+  margin: 0;
+  padding: 5px;
+}
+
+.votesAndBookmark {
+  width: 100%;
+  height: 50%;
+}
+
+.votes {
+  margin-right: 50%;
+}
+
+.bookmark {
 }

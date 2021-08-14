@@ -8,16 +8,24 @@ const MenuCard = ({ imageURL, rating, upvote, downvote , title, author, text, bo
     
     return (
         <div className = 'card'>
-            <img src={imageURL} className='img'/>
             <div className='topHalf'>
-                <Bookmark showBookmark = {bookmarkStatus} onClick = {onBookmarkClick}/>
-                    <Upvote onClick = {upvote}/>
-                    <Downvote onClick = {downvote}/>
+                <img src={imageURL} className='img'/>
                 <p>{rating}</p>
             </div>
-            <h2>{title}</h2>
-            <h5>by {author}</h5>
-            <p>{text}</p>
+            <div className='bottomHalf'>
+                <div className='votesAndBookmark'>
+                 <div className='votes'>
+                        <Upvote onClick = {upvote}/>
+                        <Downvote onClick = {downvote}/>
+                    </div>
+                    <div className='bookmark'>
+                        <Bookmark showBookmark = {bookmarkStatus} onClick = {onBookmarkClick}/>
+                    </div>
+                </div>
+                <h2>{title}</h2>
+                <h5>by {author}</h5>
+                <p>{text}</p>
+            </div>
         </div>
     )
 }
