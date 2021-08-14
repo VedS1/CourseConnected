@@ -22,7 +22,7 @@ return(
   <Router>
   
     <Route exact path="/">
-      <BookmarkedCards/>
+      <p>landing page</p>
     </Route>
 
     <Route exact path="/your-courses">
