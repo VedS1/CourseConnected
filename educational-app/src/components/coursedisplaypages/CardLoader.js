@@ -1,8 +1,10 @@
-const CardLoader = () => {
-    const idList = [11111,11112,11113]
+import CardDataFetcher from "./CardDataFetcher"
+
+const CardLoader = ({ idList }) => {
+    
     return (
         <div>
-            
+            {idList.map((id) => <CardDataFetcher id={id}/>)}
         </div>
     )
 }

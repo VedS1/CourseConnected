@@ -5,7 +5,7 @@ import Bookmark from './Bookmark'
 import { useState, useEffect } from 'react';
 
 const MenuCard = ({ imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
-    
+
     return (
         <div className = 'card'>
             <div className='topHalf'>
