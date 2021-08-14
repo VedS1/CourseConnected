@@ -14,6 +14,18 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
     const username = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
+// if(UserModel.exists({email:email}))
+// {
+//     console.log("duplicate one")
+// }
+// if(UserModel.exists({username:username}))
+// {
+//     console.log("duplicate two")
+// }
+//else
+//{
+//    console.log("no dupes")
+//}
     const user = new UserModel({username: username, password: password, email: email});
     try
     {
@@ -23,6 +35,21 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
         console.log(err);
     }
 });
+
+app.post("/login", async (req, res) =>{
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(email)
+    console.log(password)
+    UserModel.find({email: email, password: password}, (err, result)=>{
+        console.log(result);
+        if(err){
+            res.send(err);
+        }
+        res.send(result);
+    })
+})
+
 
 app.post("/insert", async (req, res)=>{ // fetching data from frontend
     const title = req.body.title; 
