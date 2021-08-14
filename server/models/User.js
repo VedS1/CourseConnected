@@ -19,6 +19,10 @@
    created:{
        type: Array, Number, 
        required: false,
+   },
+   key:{
+       type: Number,
+       required:false,
    }
    });
 
