@@ -1,37 +1,33 @@
 const mongoose = require ("mongoose");
 
 const CourseSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        required: true,
-    },
    title: {
        type: String,
-       required: true,
+       required: false,
    },
    subject: {
        type: String,
-       required: true,
+       required: false,
    },
    author: {
        type: String,
-       required: true,
+       required: false,
    },
    description: {
        type: String,
-       required: true,
+       required: false,
    },
    level: {
        type: Number,
-       required: true,
+       required: false,
    },
    dateOfCreate: {
        type: String,
-       required: true,
+       required: false,
    },
    unit: {
        type: Array, Object,
-       required: true,
+       required: false,
    }
 
 });
