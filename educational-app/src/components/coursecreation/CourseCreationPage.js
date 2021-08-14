@@ -39,9 +39,11 @@ const CourseCreationPage = () => {
             level: level,
             dateOfCreate: dateOfCreate,
           //  unit: {unitOne, unitTwo},
-        })
+        }
+        )
         .then(response => {
             console.log(response);
+            
         });};
 
 
@@ -77,7 +79,7 @@ const CourseCreationPage = () => {
              
 
 
-                <input type = 'submit' value =  'Save Task' className='btn btn-block'></input>
+                <input type = 'submit' value =  'Save Course' className='btn btn-block'></input>
             </form>
               
         </div>

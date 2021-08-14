@@ -5,12 +5,51 @@ const app = express();
 
 
 const CourseModel = require("./models/Course");
-
+const UserModel = require("./models/User")
 
 app.use(express.json());
 app.use(cors());
 
-moongose.connect("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/course?retryWrites=true&w=majority", {useNewUrlParser:true});
+app.post('/register', async (req, res) =>{//authenticating and fetching user login from frontend
+    const username = req.body.username;
+    const password = req.body.password;
+    const email = req.body.email;
+// if(UserModel.exists({email:email}))
+// {
+//     console.log("duplicate one")
+// }
+// if(UserModel.exists({username:username}))
+// {
+//     console.log("duplicate two")
+// }
+//else
+//{
+//    console.log("no dupes")
+//}
+    const user = new UserModel({username: username, password: password, email: email});
+    try
+    {
+        await user.save();
+        res.send("registered user");
+    }catch(err){
+        console.log(err);
+    }
+});
+
+app.post("/login", async (req, res) =>{
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(email)
+    console.log(password)
+    UserModel.find({email: email, password: password}, (err, result)=>{
+        console.log(result);
+        if(err){
+            res.send(err);
+        }
+        res.send(result);
+    })
+})
+
 
 app.post("/insert", async (req, res)=>{ // fetching data from frontend
     const title = req.body.title; 
