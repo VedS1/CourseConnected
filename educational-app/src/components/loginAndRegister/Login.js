@@ -44,7 +44,6 @@ const Login = () => {
                     <a href="/registration">Register here</a>
                 </p>
             </div>
-            <a href="#"></a>
         </div>
     )
 }
