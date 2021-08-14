@@ -35,11 +35,11 @@ return(
     </Route>
 
     <Route exact path="/login">
-      <h1>LOGIN PAGE GOES HERE</h1>
+      <Login/>
     </Route>
 
     <Route exact path="/registration">
-      <h1>REGISTRATION PAGE GOES HERE</h1>
+      <Register/>
     </Route>
   
     <Route exact path="/coursecreation">
