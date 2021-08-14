@@ -12,7 +12,13 @@ const Login = () => {
             email: email,
         })
         .then(response => {
-            console.log(response);
+           if(response.data.length==0)
+           {
+               //route to failed page
+           }
+           else{
+                //route to dashboard
+           }
         });};
     return (
         <div>
@@ -28,6 +34,13 @@ const Login = () => {
                 </div>
                 <input type = 'submit' value =  'Save Task' className='btn btn-block'></input>
             </form>
+            <div>
+                <p>
+                    Don't have an account already? 
+                    <a href="#">Register here</a>
+                </p>
+            </div>
+            <a href="#"></a>
         </div>
     )
 }

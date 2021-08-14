@@ -26,6 +26,15 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
 //{
 //    console.log("no dupes")
 //}
+    UserModel.find({email: email}, (err, result) =>{
+        if(result==0)
+        {
+            res.send(true)
+        }
+        else{
+            res.send(false)
+        }
+    });
     const user = new UserModel({username: username, password: password, email: email});
     try
     {
@@ -36,17 +45,20 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
     }
 });
 
-app.post("/login", async (req, res) =>{
+app.post("/login", async (req, res) =>{  //check if an account exists
     const email = req.body.email;
     const password = req.body.password;
     console.log(email)
     console.log(password)
     UserModel.find({email: email, password: password}, (err, result)=>{
-        console.log(result);
         if(err){
             res.send(err);
         }
-        res.send(result);
+        if(result){
+        res.send(result);}
+        else{
+            res.send("Wrong information")
+        }
     })
 })
 

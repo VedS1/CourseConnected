@@ -16,7 +16,13 @@ const Login = () => {
             email: email,
         })
         .then(response => {
-            console.log(response);
+            if(res)
+            {
+                //route to login page(successful registration)
+            }
+            else{
+                // route to failed registration page
+            }
         });};
 
     return (
@@ -37,6 +43,12 @@ const Login = () => {
                 </div>
                 <input type = 'submit' value =  'Register' className='btn btn-block'></input>
             </form>
+            <div>
+                <p>
+                    Have an account already? 
+                    <a href="#">Login here</a>
+                </p>
+            </div>
         </div>
     )
 }

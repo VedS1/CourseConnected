@@ -12,6 +12,14 @@
        type: String,
        required: false,
    },
+   bookmarked:{
+       type: Array, Number,
+       required: false,
+   },
+   created:{
+       type: Array, Number, 
+       required: false,
+   }
    });
 
    userDb = mongoose.createConnection("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/User?retryWrites=true&w=majority", {useNewUrlParser:true});
