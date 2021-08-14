@@ -6,9 +6,9 @@ import Login from './components/loginAndRegister/Login';
 const App = () => {
   
   return(
-    <div>
+    <>
       <CourseCreationPage />
-    </div>
+    </>
   )
 }
 
