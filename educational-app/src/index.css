@@ -1,8 +1,8 @@
 .card {
-  height: 1500px;
-  width: 1000px;
+  height: 450px;
+  width: 275px;
   background-color: green;
-  border-radius: 15em;
+  border-radius: 5em;
 }
 
 button {
@@ -12,13 +12,19 @@ button {
 
 .topHalf {
   height: 50%;
-  background-image: url("https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350");
-  border-radius: 15em;
+  border-radius: 5em;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
+.img {
+  border-radius: 5em;
+  height: 50%;
+  object-fit: cover;
+  width: 100%;
+}
+
 .upvote {
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
 }
