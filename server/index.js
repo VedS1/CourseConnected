@@ -12,7 +12,6 @@ app.use(cors());
 
 moongose.connect("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/course?retryWrites=true&w=majority", {useNewUrlParser:true});
 
-
 app.post("/insert", async (req, res)=>{ // fetching data from frontend
     const title = req.body.title; 
     const subject = req.body. subject; 
