@@ -61,7 +61,7 @@ return(
     </Route>
 
     <Route exact path="/page/:page_id">
-      <h1>COURSE MAIN PAGE GOES HERE</h1>
+      <GraphPage />
     </Route>
   
   </Router>

@@ -7,6 +7,8 @@ import BookmarkedCards from "./YourCards";
 const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
     
     const [responseA, setResponseA] = useState([])
+    const [rateList, setRateList] = useState([])
+    const userstoken = window.localStorage.getItem("token")
 
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
@@ -14,15 +16,23 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
              _id: userToken,
     }).then(response=>{
         setResponseA(response.data);
+        setRateList(response.data.rates)
     })};
-
 
     useEffect(() => {//fetch starting data
         fetchCourses(id)
     }, [])
 
-    const test = () => {
+    const upvote = () => {
         console.log("test")
+        console.log(rateList)
+        if (rateList.includes(userstoken)){
+            rateList.splice(rateList.indexOf(userstoken), 1)
+        }
+        else{
+        rateList.push(userstoken)
+        }
+        console.log(rateList)
     }
 
     return (
@@ -38,8 +48,8 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
             date = {responseA.dateOfCreate}
             level = {responseA.level}
             onBookmarkClick = {bookmarkClick}
-            upvote = {test}
-            downvote = {test}
+            upvote = {upvote}
+            downvote = {console.log("downvote")}
             />
         </div>
     )

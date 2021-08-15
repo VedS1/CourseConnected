@@ -24,6 +24,9 @@ import Unit from './components/Unit'
 
 const GraphPage = () => {
 
+    const id_number = String(window.location.pathname).slice(6,);
+    console.log(id_number);
+
     // UseState Variables
     const [units, setUnits] = useState([])
     const [elements, setElements] = useState([])
@@ -35,10 +38,12 @@ const GraphPage = () => {
 
     // useEffect runs when component is re - rendered
     useEffect(() => {
-        axios.get('http://localhost:3001/courseList/1')
-            .then(response => {
+        
+        axios.post("http://localhost:3001/courseData", {_id: id_number,})
+             .then(response=>{
+                console.log(response.data);
                 setUnits(response.data.unit);
-                setCourseName(response.data.name);
+                setCourseName(response.data.title);
             })
 
         console.log("harambe");
@@ -64,7 +69,7 @@ const GraphPage = () => {
         for (let i = 0; i < units.length; i++) {
             let tempObject = {
                 type: 'default',
-                id: idNumber,
+                id: idNumber.toString(),
                 data: {label: <Unit addMenu = {addMenu} setAddMenu = {setAddMenu} 
                         unitIndex = {i} units = {units} setUnits = {setUnits}
                         addPageUnit = {addPageUnit} setAddPageUnit = {setAddPageUnit}/>},
@@ -84,19 +89,19 @@ const GraphPage = () => {
             }
         }
 
-        // for (let i = 1; i < tempElements.length; i++) {
-        //     let tempID = 'e' + tempElements[i - 1].id + '-' + tempElements[i].id;
-        //     let tempObject = {
-        //         id: tempID,
-        //         source: tempElements[i - 1].id,
-        //         target: tempElements[i].id
-        //     }
-        //     tempEdges = tempEdges.concat(tempObject);
-        // }
+        for (let i = 1; i < tempElements.length; i++) {
+            let tempID = 'e' + tempElements[i - 1].id + '-' + tempElements[i].id;
+            let tempObject = {
+                id: tempID,
+                source: tempElements[i - 1].id,
+                target: tempElements[i].id
+            }
+            tempEdges = tempEdges.concat(tempObject);
+        }
 
-        // tempElements = tempElements.concat(tempEdges);
-        // console.log(tempElements);
-        // console.log("message here");
+        tempElements = tempElements.concat(tempEdges);
+        console.log(tempElements);
+        console.log("message here");
 
         setElements(tempElements);
 
