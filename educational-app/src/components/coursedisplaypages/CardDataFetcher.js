@@ -26,7 +26,7 @@ const CardDataFetcher = ( {id} ) => {
             title = {responseA.title}
             author = {responseA.author}
             text = {responseA.description}
-            bookmarkStatus = "true"
+            bookmarkStatus = {(false)}
             date = {responseA.dateOfCreate}
             level = {responseA.level}
             />

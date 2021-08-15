@@ -31,11 +31,11 @@ const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, aut
 }
 
 MenuCard.defaultProps = {
-    title: 'Empty Title',
+    title: 'Loading Title...',
     rating: 0,
-    author: 'Empty Author',
-    text: 'Empty Text Empty Text Empty Text',
-    imageURL: 'https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350',
+    author: 'loading...',
+    text: 'loading text...',
+    imageURL: 'https://www.kickassfacts.com/wp-content/uploads/2018/07/loading-game-life.jpg',
 }
 
 MenuCard.propTypes = {
