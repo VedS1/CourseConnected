@@ -17,21 +17,27 @@ app.use(cors());
 var popularLimit = 20;
 
 app.put("/bStatus", async (req, res)=>{ // fetching data from frontend
-    const bookmarked = req.body.bookmarked;
+    const newBookmarked = req.body.bookmarked;
     const _id = req.body._id;
-
+    if(newBookmarked===null)
+    {
+        
+    }
+    else{
     try
     {
-        UserModel.findById(id, (newBookmarkedUser)=>{
-            newBookmarkedUser.bookmarked = bookmarked;
-        })
-        console.log(user);
-        await user.save();
-        console.log("inserted data");
+        UserModel.findById(_id, (err, newBookmarkedUser)=>{
+            console.log("sgfsd");
+            newBookmarkedUser.bookmarked = newBookmarked;
+            console.log(newBookmarkedUser)
+            newBookmarkedUser.save();   
 
+            res.send("finished")
+        })
     }catch(err){
         //console.log(err);
     }
+}
 })
 
 

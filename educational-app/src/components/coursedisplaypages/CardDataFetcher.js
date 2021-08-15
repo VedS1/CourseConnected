@@ -2,17 +2,20 @@ import MenuCard from "../menucards/MenuCard"
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react"
+import BookmarkedCards from "./YourCards";
 
 const CardDataFetcher = ( {id} ) => {
+    
     const [responseA, setResponseA] = useState([])
     const [bookmarkList, setBookmarkList] = useState([])
     const [bookmarkStatus, setBookmarkStatus] = useState(false)
 
     const updateBookmarks = () =>{
+        console.log(bookmarkList)
         axios.put("http://localhost:3001/bStatus", {
             bookmarked:bookmarkList,
             _id : id,
-        });
+        })};
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {
@@ -30,40 +33,50 @@ const CardDataFetcher = ( {id} ) => {
         setBookmarkList(response.data.bookmarked)
     })};
     
-    useEffect(() => {
+    useEffect(() => {//fetch starting data
         fetchBookmarks()
         fetchCourses(id)
     }, [])
-    useEffect(() => {
+
+
+
+    useEffect(() => {//button init
         if(bookmarkList.includes(id)){
+            console.log("enable bookmark")
             setBookmarkStatus(true)
         }
         else{
+            console.log("disable bookmark")
             setBookmarkStatus(false)
         }
     }, [bookmarkList])
 
+
+
     const bookmark = () => {
+        fetchBookmarks()
         if(bookmarkList.includes(id)){
-            console.log("one")
             bookmarkList.splice(bookmarkList.indexOf(id), 1);
-            updateBookmarks();
         }
         else{
-            console.log("two")
             bookmarkList.push(id);
-            updateBookmarks();
         }
         bookmarkUpdater()
+        updateBookmarks()
+
     }
     const bookmarkUpdater = () => {
         if(bookmarkList.includes(id)){
-            setBookmarkStatus(true)
+        setBookmarkStatus(true)
+
         }
         else{
             setBookmarkStatus(false)
         }
     }
+
+
+    
     const test = () => {
         console.log("test")
     }
