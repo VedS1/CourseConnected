@@ -10,21 +10,13 @@ const BookmarkedCards = () => {
          axios.post("http://localhost:3001/popular", {
     }).then(response=>{
         setIdlist(response)
+        console.log(response)
     })};
-
 
     const [idlist, setIdlist] = useState([])
 
-    const fetchBookmarks = () =>{
-        const userToken = window.localStorage.getItem("token")
-         axios.post("http://localhost:3001/bookmark", {
-             _id: userToken,
-    }).then(response=>{
-        setIdlist(response.data.bookmarked)
-    })};
-
     useEffect(() => {
-        fetchBookmarks()
+        readPopular()
     }, [])
     
     return (
