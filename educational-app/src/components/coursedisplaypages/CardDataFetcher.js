@@ -1,17 +1,21 @@
 import MenuCard from "../menucards/MenuCard"
 import axios from "axios";
+import { useEffect } from "react";
 
 const CardDataFetcher = ( {id} ) => {
     
-    const fetchCourses = (event) =>{
-        event.preventDefault();
-        const userToken = 0//PLUG IN YOUR course ids here
+    const fetchCourses = (paramID) =>{
+        const userToken = "6117d45fddd46336c44f80eb"//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {
              _id: userToken,
     }).then(response=>{
         console.log(response);
     })};
     
+    useEffect(() => {
+        fetchCourses(id)
+    }, [])
+
     return (
         <div>
             <MenuCard

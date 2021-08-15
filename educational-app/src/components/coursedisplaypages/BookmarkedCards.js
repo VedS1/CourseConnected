@@ -9,11 +9,9 @@ const BookmarkedCards = () => {
 
     const fetchBookmarks = () =>{
         const userToken = window.localStorage.getItem("token")
-        //console.log(userToken)
          axios.post("http://localhost:3001/bookmark", {
              _id: userToken,
     }).then(response=>{
-        //console.log(response.data.bookmarked);
         setIdlist(response.data.bookmarked)
     })};
 

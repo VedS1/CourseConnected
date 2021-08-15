@@ -12,7 +12,7 @@ app.use(cors());
 
 app.post('/courseData', async (req, res) =>{
     const _id = req.body._id;
-    UserModel.findById(_id, (err, result)=>{
+    CourseModel.findById(_id, (err, result)=>{
         res.send(result); 
     })
 })
