@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from 'react';
 import MenuBar from "./MenuBar";
 import { useHistory } from "react-router";
+import "./CourseCreationPage.css";
 
 const CourseCreationPage = () => {
     //States
@@ -81,40 +82,39 @@ const CourseCreationPage = () => {
     return (
         <div>
             <MenuBar link4="true"/>
-            <h1>Course Creation</h1>
+            <div className="titleCourseCreate">
+                <h1>Course Creation</h1>
+            </div>
             <form className='add-form' onSubmit={addToDB}>
                 <div className='form-control'>
-                    <label>Title </label>
-                    <input type='text' placeholder = 'Add Title' value={title} onChange={(e) => setTitle(e.target.value)}/>
+                    <label className="titleCourseCreateField">Title: </label>
+                    <input className="titleCourseCreateFieldFillable" type='text' placeholder = 'Add title' value={title} onChange={(e) => setTitle(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Subject </label>
-                    <input type='text' placeholder = 'Add Subject' value={subject} onChange={(e) => setSubject(e.target.value)}/>
+                    <label className="subjectCourseCreateField">Subject: </label>
+                    <input className="subjectCourseCreateFieldFillable" type='text' placeholder = 'Add subject' value={subject} onChange={(e) => setSubject(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Author </label>
-                    <input type='text' placeholder = 'Add Author' value={author} onChange={(e) => setAuthor(e.target.value)}/>
+                    <label className="authorCourseCreateField">Author: </label>
+                    <input className="authorCourseCreateFieldFillable" type='text' placeholder = 'Add your creator name' value={author} onChange={(e) => setAuthor(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Description </label>
-                    <input type='text' placeholder = 'Add Description' value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <label className="descCourseCreateField">Description: </label>
+                    <input className="descCourseCreateFieldFillable" type='text' placeholder = 'Add a description' value={description} onChange={(e) => setDescription(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Cover Image URL </label>
-                    <input type='text' placeholder = 'Add Image URL' value={imageurl} onChange={(e) => setImageurl(e.target.value)}/>
+                    <label className="imgCourseCreateField">Cover Image URL: </label>
+                    <input className="imgCourseCreateFieldFillable" type='text' placeholder = 'Add URL of the image' value={imageurl} onChange={(e) => setImageurl(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Level </label>
-                    <input type='range' min = "1" max = "5" onChange={(e) => setLevel(e.target.value) }/>
+                    <label className="levelCourseCreateField">Level: </label>
+                    <input className="levelCourseCreateFieldFillable" type='range' min = "1" max = "5" onChange={(e) => setLevel(e.target.value) }/>
                 </div>
                 <div className='form-control'>
-                    <label>Date </label>
-                    <input type="date" id="dateselect" name="dateselect" onChange={(e) => setDateOfCreate(e.target.value) }/>
+                    <label className="dateCourseCreateField">Date: </label>
+                    <input className="dateCourseCreateFieldFillable" type="date" id="dateselect" name="dateselect" onChange={(e) => setDateOfCreate(e.target.value) }/>
                 </div>
-             
-
-
-                <input type = 'submit' value =  'Save Course' className='btn btn-block'></input>
+                <input className="saveCourseButton" type = 'submit' value =  'Save Course'></input>
             </form>
               
         </div>
