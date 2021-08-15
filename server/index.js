@@ -13,6 +13,7 @@ app.get('/popular', async (req, res)=>{
     CourseModel.find().sort({"rating": -1}).limit(20).exec(function (err, member) {
         res.send(member);
       })
+
 })
 
 
@@ -33,11 +34,6 @@ app.post('/bookmark', async (req, res) =>{
     })
 })
 
-app.post('/popular', async (req, res) =>{
-    UserModel.findById(_id, (err, result)=>{
-        res.send(result);       
-    })
-})
 app.post('/register', async (req, res) =>{//authenticating and fetching user login from frontend
     const username = req.body.username;
     const password = req.body.password;
