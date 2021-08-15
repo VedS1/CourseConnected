@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuCard from './components/menucards/MenuCard';
-import CourseCreationPage from './components/coursecreation/CourseCreationPage';
+import CourseCreationPage from './components/coursedisplaypages/CourseCreationPage';
 import Login from './components/loginAndRegister/Login';
 import LoginError from './components/loginAndRegister/LoginError';
 import Register from './components/loginAndRegister/Register'
@@ -9,6 +9,9 @@ import MenuBar from './components/coursedisplaypages/MenuBar';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
 import BookmarkedCards from './components/coursedisplaypages/BookmarkedCards';
+import YourCards from './components/coursedisplaypages/YourCards';
+import PopularCards from './components/coursedisplaypages/PopularCards';
+import Dashboard from './components/coursedisplaypages/Dashboard';
 
 //returns id when on url/page/id (Ask Aryan if you don't understand)
 const Page = () => {
@@ -22,15 +25,15 @@ return(
   <Router>
   
     <Route exact path="/">
-      <BookmarkedCards/>
+      <Dashboard/>
     </Route>
 
     <Route exact path="/your-courses">
-      <h1>YOUR COURSES GOES HERE</h1>
+      <YourCards/>
     </Route>
 
     <Route exact path="/popular-courses">
-      <h1>POPULAR COURSES GOES HERE</h1>
+      <PopularCards/>
     </Route>
 
     <Route exact path="/bookmarked">

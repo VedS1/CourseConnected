@@ -15,7 +15,7 @@ const BookmarkedCards = () => {
          axios.post("http://localhost:3001/bookmark", {
              _id: userToken,
     }).then(response=>{
-        setIdlist(response.data.bookmarked)
+        setIdlist(response.data.created)
     })};
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const BookmarkedCards = () => {
     
     return (
         <div>
-            <MenuBar link2="true"/>
+            <MenuBar link3="true"/>
 
             <CardLoader idList = {idlist}/>
         </div>

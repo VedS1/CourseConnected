@@ -1,8 +1,11 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
     //States
+    let history = useHistory();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -18,15 +21,18 @@ const Login = () => {
         .then(response => {
             if(response.data)
             {
-                //route to login page(successful registration)
+                history.push("/login")
             }
             else{
-                // route to failed registration page
+                history.push("/registration-failed")
             }
         });};
 
     return (
         <div>
+            <a href="/">
+                <img className="logo"  src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" alt="logo" />
+            </a>
             <h1>Register</h1>
             <form className='add-form' onSubmit={registerUser}>
                 <div className='form-control'>

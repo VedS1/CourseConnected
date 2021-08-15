@@ -3,39 +3,67 @@ import Upvote from './Upvote'
 import Downvote from './Downvote'
 import Bookmark from './Bookmark'
 import { useState, useEffect } from 'react';
+import "./MenuCard.css"
 
-const MenuCard = ({ imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
-    
+const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
+
     return (
-        <div className = 'card'>
-            <div className='topHalf'>
-                <img src={imageURL} className='img'/>
-                <p>{rating}</p>
+        <div className="fullCard">
+            <div className="mainImage">
+                <img className="image" src={imageURL}/>
             </div>
-            <div className='bottomHalf'>
-                <div className='votesAndBookmark'>
-                 <div className='votes'>
-                        <Upvote onClick = {upvote}/>
-                        <Downvote onClick = {downvote}/>
+            <div className="bottomHalf">
+                <div className="bottomTop">
+                    <div className="leftMiddle">
+                        <div className="upvote">
+                            <Upvote onClick = {upvote}/>
+                        </div>
+                        <div className="rating">
+                            {rating}
+                        </div>
+                        <div className="downvote">
+                            <Downvote onClick = {downvote}/>
+                        </div>
                     </div>
-                    <div className='bookmark'>
-                        <Bookmark showBookmark = {bookmarkStatus} onClick = {onBookmarkClick}/>
+                    <div className="middleMiddle">
+                        <div className="title">
+                            {title}
+                        </div>
+                        <div className="author">
+                            by {author}
+                        </div>
+                        <div className="date">
+                            {date}
+                        </div>
+                        <div className="level">
+                            level: {level}
+                        </div>
+                    </div>
+                    <div className="rightMiddle">
+                        <div className="bookmark">
+                            <Bookmark showBookmark = {bookmarkStatus} onClick = {onBookmarkClick}/>
+                        </div>
                     </div>
                 </div>
-                <h2>{title}</h2>
-                <h5>by {author}</h5>
-                <p>{text}</p>
+                <div className="bottomBottom">
+                    <div className="description">
+                        {text}
+                    </div>
+                </div>
+                <div className="bottomBar">
+                    
+                </div>
             </div>
         </div>
     )
 }
 
 MenuCard.defaultProps = {
-    title: 'Empty Title',
-    rating: 1000,
-    author: 'Empty Author',
-    text: 'Empty Text Empty Text Empty Text',
-    imageURL: 'https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350',
+    title: 'Loading Title...',
+    rating: 0,
+    author: 'loading...',
+    text: 'loading text...',
+    imageURL: 'https://www.kickassfacts.com/wp-content/uploads/2018/07/loading-game-life.jpg',
 }
 
 MenuCard.propTypes = {
