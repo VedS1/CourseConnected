@@ -1,5 +1,5 @@
 import MenuBar from "./MenuBar"
-import CardLoader from "./CardLoader"
+import CardLoader2 from "./CardLoader2"
 import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
@@ -11,10 +11,11 @@ const BookmarkedCards = () => {
     const readPopular = () =>{
          axios.get("http://localhost:3001/popular", {
     }).then(response => { 
-        console.log(response)
+        setIdlist(response.data)
+        console.log(idlist[0]._id)
     })
     .catch(error => {
-        console.log(error.response)
+        //console.log(error.response)
     })};
 
     const [idlist, setIdlist] = useState([])
@@ -32,7 +33,7 @@ const BookmarkedCards = () => {
         <div>
             <MenuBar link1="true"/>
             
-            <CardLoader idList = {idlist}/>
+            <CardLoader2 idList = {idlist}/>
         </div>
     )
 }

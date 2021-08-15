@@ -1,4 +1,7 @@
 import { useHistory } from "react-router-dom";
+import axios from "axios"
+import { useState } from "react"
+import { useEffect } from "react"
 import "./MenuBar.css"
 
 const MenuBar = ({ link1,link2,link3,link4 }) => {
@@ -9,6 +12,25 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
     const bold = {fontWeight: "bold"}
     const normal = {fontWeight: "normal"}
     const buttonstyle =  {cursor:"pointer"}
+
+    const [username, setUsername] = useState([])
+
+    const fetchBookmarks = () =>{
+        const userToken = window.localStorage.getItem("token")
+         axios.post("http://localhost:3001/bookmark", {
+             _id: userToken,
+    }).then(response=>{
+        setUsername(response.data.username)
+    })};
+
+    const deleteToken = () => {
+        window.localStorage.removeItem('token');
+        history.push("/login")
+    }
+
+    useEffect(() => {
+        fetchBookmarks()
+    }, [])
 
     return (
         <div className='menubar'>
@@ -27,6 +49,9 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
             <input className="search" type="text" name="" placeholder="  Search..."/>
             <a className="login" style = {buttonstyle} onClick={loginClick}>Login</a>
             <a className="register" style = {buttonstyle} onClick={registerClick}>Register</a>
+            <text className="register">{username}</text>
+            <a className="register" style = {buttonstyle} onClick={deleteToken}>Logout</a>
+
             </div>
         </div>
     )
