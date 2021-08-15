@@ -9,10 +9,12 @@ const UserModel = require("./models/User")
 
 
 //CourseModel.find().sort({"rating": -1});
+app.get('/popular', async (req, res)=>{
+    CourseModel.find().sort({"rating": -1}).limit(20).exec(function (err, member) {
+        res.send(member);
+      })
+})
 
-CourseModel.find().sort({"rating": -1}).limit(20).exec(function (err, member) {
-    console.log(member);
-  })
 
 app.use(express.json());
 app.use(cors());

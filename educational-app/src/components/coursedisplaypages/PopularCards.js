@@ -5,6 +5,12 @@ import { useEffect } from "react"
 import { useState } from "react"
 
 const BookmarkedCards = () => {
+
+    const readPopular = (event) =>{
+        then(response => {
+            setIdlist(response)
+        })
+    }
     const [idlist, setIdlist] = useState([])
 
     const fetchBookmarks = () =>{
