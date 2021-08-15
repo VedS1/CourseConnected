@@ -33,7 +33,7 @@ const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, aut
                             by {author}
                         </div>
                         <div className="date">
-                            created on {date}
+                            {date}
                         </div>
                         <div className="level">
                             level: {level}
