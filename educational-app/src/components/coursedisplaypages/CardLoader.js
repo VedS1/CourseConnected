@@ -37,15 +37,22 @@ const CardLoader = ({ idList }) => {
             bookmarklist.push(id);
         }
 
-        //Send to backend
-        updateBookmarks(id)
+        updateBookmarks(window.localStorage.getItem("token"))
+    }
+
+    const isBookmarked = (id) =>{
+        if(bookmarklist.includes(id)){
+            return true;
+        }
+        else
+            return false;
     }
 
     return (
         <div>
             {idList.map((id) => 
             <div>
-                <CardDataFetcher id={id} bookmarkStatus={true} bookmarkClick={() => clickedBookmark(id)} />
+                <CardDataFetcher id={id} bookmarkStatus={isBookmarked(id)} bookmarkClick={() => clickedBookmark(id)} />
             </div>
             )}
         </div>
