@@ -30,8 +30,7 @@ const ChapterAddPage = ({units, setUnits, addPageUnit, addMenu, setAddMenu}) => 
             let tempArray = tempContents[addPageUnit].contents.concat(sentToServerObject);
             tempContents[addPageUnit].contents = tempArray;
             const finalArray = tempContents;
-
-                    setUnits(finalArray);
+            setUnits([...finalArray]);
         }
     }, [sentToServerObject])
 

@@ -7,9 +7,10 @@ import ReactFlow, {
     MiniMap,
     Controls,
     Background,
+    ReactFlowProvider
   } from 'react-flow-renderer';
   
-import './styling/graph-page.css';
+
 
 // Importing Axios for Communicating with Json-Server and Backend
 import axios from 'axios'
@@ -47,8 +48,8 @@ const GraphPage = () => {
 
     // This useEffect runs when "units" variable changes 
     useEffect(() => {
-        formatElements(units);
         console.log("harambe");
+        formatElements(units);
     }, [units])
 
     // Formats everything into the format for ReactFlow component
@@ -83,44 +84,40 @@ const GraphPage = () => {
             }
         }
 
-        for (let i = 1; i < tempElements.length; i++) {
-            let tempID = 'e' + tempElements[i - 1].id + '-' + tempElements[i].id;
-            let tempObject = {
-                id: tempID,
-                source: tempElements[i - 1].id,
-                target: tempElements[i].id
-            }
-            tempEdges = tempEdges.concat(tempObject);
-        }
+        // for (let i = 1; i < tempElements.length; i++) {
+        //     let tempID = 'e' + tempElements[i - 1].id + '-' + tempElements[i].id;
+        //     let tempObject = {
+        //         id: tempID,
+        //         source: tempElements[i - 1].id,
+        //         target: tempElements[i].id
+        //     }
+        //     tempEdges = tempEdges.concat(tempObject);
+        // }
 
-        tempElements = tempElements.concat(tempEdges);
-        console.log("harambe");
+        // tempElements = tempElements.concat(tempEdges);
+        // console.log(tempElements);
+        // console.log("message here");
 
         setElements(tempElements);
 
     }
 
-    const style = {
-        background: 'red',
-        width: '100%',
-        height: 300,
-      };
-
     return(
         <div>
+            <ReactFlowProvider>
             <ReactFlow elements={elements} >
                 <div className = "graph-overlay">
                     <div className = "header-div">
                         <h1 className = "graph-page-title">{courseName}</h1>
                     </div>
                     <div className = "second-lower">
-                        {addMenu ? <ChapterAddPage units = {units} setUnits = {setUnits} addPageUnit = {addPageUnit} addMenu = {addMenu} setAddMenu = {setAddMenu}/> : <p></p>}
+                        {addMenu ? <ChapterAddPage setElements = {setElements} units = {units} setUnits = {setUnits} addPageUnit = {addPageUnit} addMenu = {addMenu} setAddMenu = {setAddMenu}/> : <p></p>}
                     </div>
                 </div>
                 <MiniMap />
                 <Controls />
             </ReactFlow >
-
+            </ReactFlowProvider>
         </div>
     )
 }
