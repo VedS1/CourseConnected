@@ -48,10 +48,10 @@ const CardLoader = ({ idList }) => {
     }
 
     return (
-        <div>
+        <div className="CardHolder">
             {idList.map((id) => 
             
-                <CardDataFetcher className="CardHolder" id={id} bookmarkStatus={isBookmarked(id)} bookmarkClick={() => clickedBookmark(id)} />
+                <CardDataFetcher id={id} bookmarkStatus={isBookmarked(id)} bookmarkClick={() => clickedBookmark(id)} />
             
             )}
         </div>
