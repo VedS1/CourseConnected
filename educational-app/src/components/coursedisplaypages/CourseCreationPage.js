@@ -41,7 +41,15 @@ const CourseCreationPage = () => {
    //     
    // )}, []);
     
-    const addToDB = (event) =>{
+   const updateCourses = (id, createdid) =>{
+    console.log(createdid)
+    console.log(id)
+    axios.put("http://localhost:3001/cStatus", {
+        created:createdid,
+        _id : id,
+    })}; 
+   
+   const addToDB = (event) =>{
         event.preventDefault();
         axios.post("http://localhost:3001/insert", {
             title: title,
@@ -56,7 +64,8 @@ const CourseCreationPage = () => {
         )
         .then(response => {
             console.log(response);
-            
+            updateCourses(window.localStorage.getItem("token"), response)
+            history.push("/your-courses")
         });};
 
 
