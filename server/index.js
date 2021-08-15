@@ -16,12 +16,15 @@ app.use(cors());
 
 var popularLimit = 20;
 
-app.post("/bStatus", async (req, res)=>{ // fetching data from frontend
+app.put("/bStatus", async (req, res)=>{ // fetching data from frontend
     const bookmarked = req.body.bookmarked;
-    console.log(bookmarked)
-    const user = new UserModel({bookmarked: bookmarked})
+    const _id = req.body._id;
+
     try
     {
+        UserModel.findById(id, (newBookmarkedUser)=>{
+            newBookmarkedUser.bookmarked = bookmarked;
+        })
         console.log(user);
         await user.save();
         console.log("inserted data");
@@ -36,7 +39,7 @@ app.post("/login", async (req, res) =>{  //check if an account exists
     const email = req.body.email;
     const password = req.body.password;
     UserModel.find({email: email, password: password}, (err, result)=>{
-        if(err){
+        if(err){    
             res.send(err);
         }
         if(result){

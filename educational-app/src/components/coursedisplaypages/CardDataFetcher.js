@@ -9,10 +9,10 @@ const CardDataFetcher = ( {id} ) => {
     const [bookmarkStatus, setBookmarkStatus] = useState(false)
 
     const updateBookmarks = () =>{
-        axios.post("http://localhost:3001/bStatus", {
+        axios.put("http://localhost:3001/bStatus", {
             bookmarked:bookmarkList,
-        }).then(response=>{
-        })};
+            _id : id,
+        });
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {
