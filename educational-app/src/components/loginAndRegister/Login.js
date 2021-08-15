@@ -9,8 +9,8 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const loginUser = (event) =>{
-        console.log("sdf")
         event.preventDefault();
+        console.log("asdg")
         axios.post("http://localhost:3001/login", {
             password:password,
             email: email,
@@ -18,15 +18,12 @@ const Login = () => {
         .then(response => {
            if(response.data.length==0)
            {
-               console.log("sdgfsdg")
 
             history.push("/login-failed")
                 
            }
            else{
-            console.log("dasf")
             const id = response.data.shift();
-            console.log(id._id)
             window.localStorage.setItem('token', id._id);
             history.push("/your-courses")
            }
@@ -46,7 +43,7 @@ const Login = () => {
                     <label>Password</label>
                     <input type='password' placeholder = 'Add Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
-                <input type = 'submit' value =  'Login' className='btn btn-block'></input>
+                <input type = 'su bmit' value =  'Save Task' className='btn btn-block'></input>
             </form>
             <div>
                 <p>
