@@ -26,7 +26,7 @@ app.put("/cStatus", async (req, res)=>{ // fetching data from frontend
     {
         await UserModel.findById(_id, (err, newCreatedUser)=>{
         newCreatedUser.created = newCreated;
-        newCreated.save();
+        newCreatedUser.save();
         console.log(newCreatedUser.created);
         });
     }catch(err){
