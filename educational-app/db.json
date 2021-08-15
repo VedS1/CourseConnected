@@ -2,61 +2,97 @@
   "courseList": [
     {
       "id": 1,
-      "name": "a",
-      "subject": "Subject Name",
-      "description": "Description of course",
-      "level": 3,
-      "day": "Day of Creation",
-      "authorName": "Username of the author of the course",
+      "name": "Calculus BC",
+      "subject": "Mathematics",
+      "description": "Calculus BC is a very difficult freshman year course in college that is heavily involved in differentiation and integration.",
+      "level": 5,
+      "day": "08/14/2021",
+      "authorName": "Aditya Shelke",
       "unit": [
         { 
-          "id": 5,
-          "name": "Unit 1",
+          "name": "Unit 1: Limits",
           "contents": [
             {
+              "title": "Calculus 1 - Introduction to Limits",
               "type": "youtube",
-              "description": "Description of youtube video",
-              "data": "https://youtube.com/example"
+              "description": "Limits explained for people who have never seen them before by The Organic Chemistry Tutor. This is a very good video.",
+              "data": "https://www.youtube.com/watch?v=xhKf7v2FU_g"
             },
             {
+              "title": "Limits - Evaluating",
               "type": "link",
-              "description": "Description of link",
-              "data": "https://mathisfun.com"
+              "description": "A Mathisfun page that explores many examples of limits using great visuals and graphs.",
+              "data": "https://www.mathsisfun.com/calculus/limits-evaluating.html"
             },
             {
+              "title": "Basic, Dumbed Down Summary of Limits",
               "type": "text",
-              "description": "Description of the text",
-              "data": "This is where the user can write text. It can be notes, or something else entirely."
+              "description": "Limits are basically the value a graph approaches from either side of the point. They can be estimated and evaluated to help us make calculations and asssumptions in calculus.",
+              "data": "Limits are basically the value a graph approaches from either side of the point. They can be estimated and evaluated to help us make calculations and assumptions in calculus."
             },
             {
+              "title": "A Discontinuous Function",
               "type": "image",
-              "description": "Description of the user inputted image",
-              "data": "Image URL"
+              "description": "Because the limits approach different values from both sides, the graph is discontinuous.",
+              "data": "https://www.mathsisfun.com/calculus/images/discontinuous-function.svg"
             }
           ]
         },
-        {
-          "name": "Unit 2",
+        { 
+          "name": "Unit 2: Derivatives",
           "contents": [
             {
+              "title": "Calculus 1 - Introduction to Limits",
               "type": "youtube",
               "description": "Description of youtube video",
-              "data": "https://youtube.com/example"
+              "data": "https://www.youtube.com/watch?v=xhKf7v2FU_g"
             },
             {
+              "title": "Limits - Evaluating",
               "type": "link",
               "description": "Description of link",
-              "data": "https://mathisfun.com"
+              "data": "https://www.mathsisfun.com/calculus/limits-evaluating.html"
             },
             {
+              "title": "Basic, Dumbed Down Summary of Limits",
               "type": "text",
               "description": "Description of the text",
-              "data": "This is where the user can write text. It can be notes, or something else entirely."
+              "data": "Limits are basically the value a graph approaches from either side of the point. They can be estimated and evaluated to help us make calculations and assumptions in calculus."
             },
             {
+              "title": "A Discontinuous Function",
               "type": "image",
               "description": "Description of the user inputted image",
-              "data": "https://cdn.discordapp.com/attachments/874495990575530014/875868585057206323/1628741602-Wallapper-HD.comWallpaper_Leaves_Plants_Neon_2048x1152_Mzark.jpg"
+              "data": "https://www.mathsisfun.com/calculus/images/discontinuous-function.svg"
+            }
+          ]
+        },
+        { 
+          "name": "Unit 3: Integrals",
+          "contents": [
+            {
+              "title": "Calculus 1 - Introduction to Limits",
+              "type": "youtube",
+              "description": "Description of youtube video",
+              "data": "https://www.youtube.com/watch?v=xhKf7v2FU_g"
+            },
+            {
+              "title": "Limits - Evaluating, pretty easy",
+              "type": "link",
+              "description": "Description of link",
+              "data": "https://www.mathsisfun.com/calculus/limits-evaluating.html"
+            },
+            {
+              "title": "Basic, Dumbed Down Summary of Limits",
+              "type": "text",
+              "description": "Description of the text",
+              "data": "Limits are basically the value a graph approaches from either side of the point. They can be estimated and evaluated to help us make calculations and assumptions in calculus."
+            },
+            {
+              "title": "A Discontinuous Function",
+              "type": "image",
+              "description": "Description of the user inputted image",
+              "data": "https://www.mathsisfun.com/calculus/images/discontinuous-function.svg"
             }
           ]
         }

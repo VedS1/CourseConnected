@@ -7,12 +7,12 @@ import Register from './components/loginAndRegister/Register'
 import RegisterError from './components/loginAndRegister/RegisterError';
 import MenuBar from './components/coursedisplaypages/MenuBar';
 import { useState, useEffect } from 'react';
+import GraphPage from './graph-page/GraphPage'
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
 import BookmarkedCards from './components/coursedisplaypages/BookmarkedCards';
 import YourCards from './components/coursedisplaypages/YourCards';
 import PopularCards from './components/coursedisplaypages/PopularCards';
 import Dashboard from './components/coursedisplaypages/Dashboard';
-
 //returns id when on url/page/id (Ask Aryan if you don't understand)
 const Page = () => {
   const str = String(window.location.pathname).slice(6,)
