@@ -14,6 +14,8 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
     const buttonstyle =  {cursor:"pointer"}
 
     const [username, setUsername] = useState([])
+    const [loginstatus, setLoginstatus] = useState(true)
+
 
     const fetchBookmarks = () =>{
         const userToken = window.localStorage.getItem("token")
@@ -30,6 +32,11 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
 
     useEffect(() => {
         fetchBookmarks()
+
+        const userToken = window.localStorage.getItem("token")
+        if (userToken == null) {
+           setLoginstatus(false)
+        }
     }, [])
 
     return (
@@ -47,10 +54,10 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
             <div className='rightSide'>
             <img className="searchIcon" src="https://cdn.discordapp.com/attachments/875928959920005168/876289495476076544/search.png" alt="search icon" />
             <input className="search" type="text" name="" placeholder="  Search..."/>
-            <a className="login" style = {buttonstyle} onClick={loginClick}>Login</a>
-            <a className="register" style = {buttonstyle} onClick={registerClick}>Register</a>
-            <text className="register">{username}</text>
-            <a className="register" style = {buttonstyle} onClick={deleteToken}>Logout</a>
+            <a className="login" style = {buttonstyle} onClick={loginstatus ? {} : (loginClick)}>{loginstatus ? "" : "Login"}</a>
+            <a className="register" style = {buttonstyle} onClick={loginstatus ? {} : (registerClick)}>{loginstatus ? "" : "Register"}</a>
+            <text className="register">{loginstatus ? (username) : ("")}</text>
+            <a className="register" style = {buttonstyle} onClick={loginstatus ? (deleteToken) : {}}>{loginstatus ? "Logout" : ("")}</a>
 
             </div>
         </div>
