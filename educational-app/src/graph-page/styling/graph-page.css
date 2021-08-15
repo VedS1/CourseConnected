@@ -81,7 +81,7 @@
     position: relative;
     width: 500px;
     height: 600px;
-    z-index: 999;
+    z-index: 800;
     background-color: grey;
     align-items: center;
 }
@@ -97,7 +97,17 @@
     padding: 0;
     margin: 0;
     width: 100%;
-    height: calc(100% - 80px);
+    height: calc(100% - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.third-lower {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,4 +120,16 @@
 
 .react-flow__node {
     opacity: 100;
+}
+
+.unit-addition-input {
+    z-index: 999;
+}
+
+.unit-addition-button {
+    z-index: 999;
+}
+
+.unit-addition-container {
+    z-index: 999;
 }

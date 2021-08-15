@@ -18,6 +18,7 @@ import axios from 'axios'
 // Components Brought In
 import ChapterAddPage from './components/ChapterAddPage'
 import Unit from './components/Unit'
+import UnitAddition from './components/UnitAddition'
 
 // Start of the Actual React App
 // Defined by the Functional Component GraphPage
@@ -107,6 +108,10 @@ const GraphPage = () => {
 
     }
 
+    const unitCreation = () => {
+
+    }
+
     return(
         <div>
             <ReactFlowProvider>
@@ -116,7 +121,10 @@ const GraphPage = () => {
                         <h1 className = "graph-page-title">{courseName}</h1>
                     </div>
                     <div className = "second-lower">
-                        {addMenu ? <ChapterAddPage setElements = {setElements} units = {units} setUnits = {setUnits} addPageUnit = {addPageUnit} addMenu = {addMenu} setAddMenu = {setAddMenu}/> : <p></p>}
+                        {addMenu ? <ChapterAddPage id_number = {id_number} setElements = {setElements} units = {units} setUnits = {setUnits} addPageUnit = {addPageUnit} addMenu = {addMenu} setAddMenu = {setAddMenu}/> : <p></p>}
+                    </div>
+                    <div className = "third-lower">
+                        <UnitAddition units = {units} setUnits = {setUnits} id_number = {id_number}/>
                     </div>
                 </div>
                 <MiniMap />
