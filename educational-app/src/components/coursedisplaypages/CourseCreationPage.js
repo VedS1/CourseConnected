@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
+import MenuBar from "./MenuBar";
 
 const CourseCreationPage = () => {
     //States
@@ -50,6 +51,7 @@ const CourseCreationPage = () => {
 
     return (
         <div>
+            <MenuBar link4="true"/>
             <h1>Course Creation</h1>
             <form className='add-form' onSubmit={addToDB}>
                 <div className='form-control'>

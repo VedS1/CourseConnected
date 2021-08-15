@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuCard from './components/menucards/MenuCard';
-import CourseCreationPage from './components/coursecreation/CourseCreationPage';
+import CourseCreationPage from './components/coursedisplaypages/CourseCreationPage';
 import Login from './components/loginAndRegister/Login';
 import LoginError from './components/loginAndRegister/LoginError';
 import Register from './components/loginAndRegister/Register'
@@ -24,7 +24,7 @@ return(
   <Router>
   
     <Route exact path="/">
-      <p>landing page</p>
+      <MenuCard></MenuCard>
     </Route>
 
     <Route exact path="/your-courses">

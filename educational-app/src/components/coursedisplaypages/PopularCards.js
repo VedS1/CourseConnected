@@ -22,7 +22,7 @@ const BookmarkedCards = () => {
     return (
         <div>
             <MenuBar link1="true"/>
-
+            
             <CardLoader idList = {idlist}/>
         </div>
     )
