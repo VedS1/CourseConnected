@@ -13,12 +13,16 @@
        required: false,
    },
    bookmarked:{
-       type: Array, Number,
+       type: Array, String,
        required: false,
    },
    created:{
-       type: Array, Number, 
+       type: Array, String, 
        required: false,
+   },
+   key:{
+       type: String,
+       required:false,
    }
    });
 
