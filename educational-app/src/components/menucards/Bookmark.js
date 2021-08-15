@@ -7,7 +7,7 @@ const Bookmark = ({showBookmark, onClick}) => {
     const [inverter, setInverter] = useState(false)
     
     const clicker = () => {
-        //setInverter(!inverter)
+        setInverter(!inverter)
         onClick()
     }
     

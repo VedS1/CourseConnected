@@ -23,7 +23,6 @@ const CardLoader = ({ idList }) => {
             bookmarked:bookmarklist,
             _id : id,
         }).then(response=>{
-            console.log("daghdhghashhsdg")
             console.log(response);
         })};
 
