@@ -26,12 +26,16 @@ const UnitAddition = ({units, setUnits, id_number}) => {
         
         let arrayToPush = units;
         arrayToPush.push(tempUnitObject);
+        console.log(arrayToPush);
+
+        
         
         axios.put("http://localhost:3001/unitAdd", {
                 unit: arrayToPush,
                 _id : id_number,
             });
-
+        
+        setUnits(arrayToPush);
 
     }
 
