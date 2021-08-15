@@ -1,6 +1,7 @@
 import CardDataFetcher from "./CardDataFetcher"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import "./CardLoader.css"
 
 const CardLoader = ({ idList }) => {
     
@@ -48,11 +49,11 @@ const CardLoader = ({ idList }) => {
     }
 
     return (
-        <div>
+        <div className="CardHolder">
             {idList.map((id) => 
-            <div>
+            
                 <CardDataFetcher id={id._id} bookmarkStatus={isBookmarked(id._id)} bookmarkClick={() => clickedBookmark(id._id)} />
-            </div>
+            
             )}
         </div>
     )

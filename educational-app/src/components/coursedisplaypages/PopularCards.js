@@ -33,7 +33,7 @@ const BookmarkedCards = () => {
         <div>
             <MenuBar link1="true"/>
             
-            <CardLoader2 idList = {idlist}/>
+            <div className="cardLoaderTwo"><CardLoader2 idList = {idlist}/></div>
         </div>
     )
 }

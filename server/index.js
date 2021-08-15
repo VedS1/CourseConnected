@@ -16,18 +16,47 @@ app.use(cors());
 
 var popularLimit = 20;
 
+app.post("/unitAdd", async (req, res)=>{
+    const _id = req.body._id;
+    const newUnit = req.body.unit;
+    try
+    {
+        await CourseModel.findById(_id, (err, newUnit)=>{
+        newUnit.unit = newUnit;
+        newUnit.save();
+        });
+    }catch(err){
+        //console.log(err); 
+    }
+})
+
+
+app.put("/rStatus", async (req, res)=>{ // fetching data from frontend
+
+    const newRating = req.body.rating;
+    const newRates = req.body.rates;
+    const _id = req.body._id;
+    try
+    {
+        await CourseModel.findById(_id, (err, newRatedCourse)=>{
+        newRatedCourse.rates = newRates;
+        newRatedCourse.rating = newRating;
+        newRatedCourse.save();
+        });
+    }catch(err){
+        //console.log(err); 
+    }
+})
 
 app.put("/cStatus", async (req, res)=>{ // fetching data from frontend
 
     const newCreated = req.body.created;
     const _id = req.body._id;
-    console.log(_id);
     try
     {
         await UserModel.findById(_id, (err, newCreatedUser)=>{
         newCreatedUser.created = newCreated;
         newCreatedUser.save();
-        console.log(newCreatedUser.created);
         });
     }catch(err){
         //console.log(err); 
