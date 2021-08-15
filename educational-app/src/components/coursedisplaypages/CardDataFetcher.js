@@ -16,8 +16,8 @@ const CardDataFetcher = ( {id} ) => {
         <div>
             <MenuCard
             imageURL = "https://cdn.discordapp.com/attachments/675487279623569479/876244497015644190/unknown.png"
-            rating = {id}
-            title = "Mr. Stuff"
+            rating = "1000"
+            title = {id}
             author = "Ved Soolgiri"
             text = "I am Stuff"
             bookmarkStatus = "true"
