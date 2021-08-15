@@ -21,14 +21,15 @@ const CourseCreationPage = () => {
   //const editDB = ()=>{ //edits database WHEN YOU SPECIFIY THE ID
   //  );
   //};
-    useEffect(() => {
-        console.log("I suck")
-        axios.put("http://localhost:3001/update", {
-            id: "61175c7edad9e17e1c53925b",
-            newTitle: "proof of concept",
-        }
-        
-    )}, []);
+
+  //  useEffect(() => {
+    //    console.log("I suck")
+     //   axios.put("http://localhost:3001/update", {
+     //       id: "611813413648ed8d24ede623",
+     //       newTitle: "proof of concept",
+    //    }
+   //     
+   // )}, []);
     
     const addToDB = (event) =>{
         event.preventDefault();
