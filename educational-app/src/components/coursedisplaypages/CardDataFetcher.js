@@ -45,10 +45,10 @@ const CardDataFetcher = ( {id} ) => {
 
     const bookmark = () => {
         if(bookmarkList.includes(id)){
-            //remove the id
+            bookmarkList.splice(bookmarkList.indexOf(id), 1);
         }
         else{
-            //add the id
+            bookmarkList.push(id);
         }
         fetchBookmarks()
     }
