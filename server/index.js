@@ -16,6 +16,24 @@ app.use(cors());
 
 var popularLimit = 20;
 
+
+app.put("/cStatus", async (req, res)=>{ // fetching data from frontend
+
+    const newCreated = req.body.created;
+    const _id = req.body._id;
+    console.log(_id);
+    try
+    {
+        await UserModel.findById(_id, (err, newCreatedUser)=>{
+        newCreatedUser.created = newCreated;
+        newCreated.save();
+        console.log(newCreatedUser.created);
+        });
+    }catch(err){
+        //console.log(err); 
+    }
+})
+
 app.put("/bStatus", async (req, res)=>{ // fetching data from frontend
 
     const newBookmarked = req.body.bookmarked;
@@ -120,7 +138,7 @@ app.post("/insert", async (req, res)=>{ // fetching data from frontend
     try
     {
         await course.save();
-        res.send("inserted data");
+        res.send(course._id);
 
     }catch(err){
     }
