@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
 import BookmarkedCards from './components/coursedisplaypages/BookmarkedCards';
 import YourCards from './components/coursedisplaypages/YourCards';
 import PopularCards from './components/coursedisplaypages/PopularCards';
+import Dashboard from './components/coursedisplaypages/Dashboard';
 
 //returns id when on url/page/id (Ask Aryan if you don't understand)
 const Page = () => {
@@ -24,7 +25,7 @@ return(
   <Router>
   
     <Route exact path="/">
-      <MenuCard></MenuCard>
+      <Dashboard/>
     </Route>
 
     <Route exact path="/your-courses">

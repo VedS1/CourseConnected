@@ -13,7 +13,9 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
     return (
         <div className='menubar'>
             <div className='leftSide'>
-            <img className="logo" src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" alt="logo" />
+            <a href="/">
+                <img className="logo"  src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" alt="logo" />
+            </a>
             <a className="popularCourses" style={link1 ? (bold) : (normal)} href="/popular-courses">Popular Courses</a>
             <a className="bookmarkedCourses"    style={link2 ? (bold) : (normal)} href="/bookmarked">Bookmarked Courses</a>
             <a className="yourCourses" style={link3 ? (bold) : (normal)} href="/your-courses">Your Courses</a>
