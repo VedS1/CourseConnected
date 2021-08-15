@@ -8,7 +8,6 @@ const BookmarkedCards = () => {
 
     const readPopular = () =>{
          axios.post("http://localhost:3001/popular", {
-             _id: userToken,
     }).then(response=>{
         setIdlist(response)
     })};
