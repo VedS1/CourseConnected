@@ -2,6 +2,14 @@ import MenuCard from "../menucards/MenuCard"
 
 const CardDataFetcher = ( {id} ) => {
     
+    const fetchCourses = (event) =>{
+        event.preventDefault();
+        const userToken = 0//PLUG IN YOUR course ids here
+         axios.post("http://localhost:3001/courseData", {
+             _id: userToken,
+    }).then(response=>{
+        console.log(response);
+    })};
     
     return (
         <div>
