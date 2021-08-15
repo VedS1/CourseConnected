@@ -6,7 +6,6 @@ const app = express();
 
 const CourseModel = require("./models/Course");
 const UserModel = require("./models/User");
-const { default: BookmarkedCards } = require("../educational-app/src/components/coursedisplaypages/BookmarkedCards");
 
 app.use(express.json());
 app.use(cors());
