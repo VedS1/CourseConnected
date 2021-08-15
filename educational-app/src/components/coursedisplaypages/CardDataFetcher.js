@@ -5,7 +5,13 @@ import { useState } from "react"
 
 const CardDataFetcher = ( {id} ) => {
     const [responseA, setResponseA] = useState([])
+    const[bK, setbK] = useState([])
 
+    const updateBookmarks = () =>{
+        axios.post("http://localhost:3001/bStatus", {
+            bookmarked:bookmarked,
+        });
+    }
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {

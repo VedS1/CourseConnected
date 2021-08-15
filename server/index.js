@@ -5,7 +5,8 @@ const app = express();
 
 
 const CourseModel = require("./models/Course");
-const UserModel = require("./models/User")
+const UserModel = require("./models/User");
+const { default: BookmarkedCards } = require("../educational-app/src/components/coursedisplaypages/BookmarkedCards");
 
 app.use(express.json());
 app.use(cors());
@@ -15,6 +16,20 @@ app.use(cors());
 
 
 var popularLimit = 20;
+
+app.post("/bStatus", async (req, res)=>{ // fetching data from frontend
+    const bokomarked = res.body.boomarked;
+    const user = new UserModel({boomarked :BookmarkedCards})
+    try
+    {
+        await user.save();
+        res.send("inserted data");
+
+    }catch(err){
+        console.log(err);
+    }
+}); 
+
 
 app.post("/login", async (req, res) =>{  //check if an account exists
     const email = req.body.email;
