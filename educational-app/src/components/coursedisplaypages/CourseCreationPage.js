@@ -91,7 +91,7 @@ const CourseCreationPage = () => {
                     <input type='range' min = "1" max = "5" onChange={(e) => setLevel(e.target.value) }/>
                 </div>
                 <div className='form-control'>
-                    <label>Description </label>
+                    <label>Date </label>
                     <input type="date" id="dateselect" name="dateselect" onChange={(e) => setDateOfCreate(e.target.value) }/>
                 </div>
              
