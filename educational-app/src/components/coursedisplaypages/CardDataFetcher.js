@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react"
 import BookmarkedCards from "./YourCards";
+import "./CardLoader.css"
 
 const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
     
