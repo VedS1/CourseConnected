@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import "./MenuBar.css"
 
 const MenuBar = ({ link1,link2,link3 }) => {
     let history = useHistory();
@@ -10,13 +11,20 @@ const MenuBar = ({ link1,link2,link3 }) => {
     const buttonstyle =  {cursor:"pointer"}
 
     return (
-        <div>
-            <a style={link1 ? (bold) : (normal)} href="/popular-courses">Popular Courses</a>
-            <a style={link2 ? (bold) : (normal)} href="/bookmarked">Bookmarked Courses</a>
-            <a style={link3 ? (bold) : (normal)} href="/your-courses">Your Courses</a>
+        <div className='menubar'>
+            <div className='leftSide'>
+            <img className="logo" src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" alt="logo" />
+            <a className="popularCourses" style={link1 ? (bold) : (normal)} href="/popular-courses">Popular Courses</a>
+            <a className="bookmarkedCourses"    style={link2 ? (bold) : (normal)} href="/bookmarked">Bookmarked Courses</a>
+            <a className="yourCourses" style={link3 ? (bold) : (normal)} href="/your-courses">Your Courses</a>
+            </div>
             
-            <button style = {buttonstyle} onClick={loginClick}>Login</button>
-            <button style = {buttonstyle} onClick={registerClick}>Register</button>
+            <div className='rightSide'>
+            <img className="searchIcon" src="https://cdn.discordapp.com/attachments/875928959920005168/876289495476076544/search.png" alt="search icon" />
+            <input className="search" type="text" name="" placeholder="  Search..."/>
+            <a className="login" style = {buttonstyle} onClick={loginClick}>Login</a>
+            <a className="register" style = {buttonstyle} onClick={registerClick}>Register</a>
+            </div>
         </div>
     )
 }
