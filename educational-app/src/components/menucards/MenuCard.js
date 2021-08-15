@@ -50,6 +50,9 @@ const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, aut
                         {text}
                     </div>
                 </div>
+                <div className="bottomBar">
+                    
+                </div>
             </div>
         </div>
     )
