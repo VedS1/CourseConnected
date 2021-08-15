@@ -4,7 +4,7 @@ import Downvote from './Downvote'
 import Bookmark from './Bookmark'
 import { useState, useEffect } from 'react';
 
-const MenuCard = ({ imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
+const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
 
     return (
         <div className = 'card'>
@@ -32,7 +32,7 @@ const MenuCard = ({ imageURL, rating, upvote, downvote , title, author, text, bo
 
 MenuCard.defaultProps = {
     title: 'Empty Title',
-    rating: 1000,
+    rating: 0,
     author: 'Empty Author',
     text: 'Empty Text Empty Text Empty Text',
     imageURL: 'https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350',

@@ -1,15 +1,17 @@
 import MenuCard from "../menucards/MenuCard"
 import axios from "axios";
 import { useEffect } from "react";
+import { useState } from "react"
 
 const CardDataFetcher = ( {id} ) => {
-    
+    const [responseA, setResponseA] = useState([])
+
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {
              _id: userToken,
     }).then(response=>{
-        console.log(response);
+        setResponseA(response.data);
     })};
     
     useEffect(() => {
@@ -19,12 +21,14 @@ const CardDataFetcher = ( {id} ) => {
     return (
         <div>
             <MenuCard
-            imageURL = "https://cdn.discordapp.com/attachments/675487279623569479/876244497015644190/unknown.png"
-            rating = "1000"
-            title = {id}
-            author = "Ved Soolgiri"
-            text = "I am Stuff"
+            imageURL = {responseA.imgURL}
+            rating = {responseA.rating}
+            title = {responseA.title}
+            author = {responseA.author}
+            text = {responseA.description}
             bookmarkStatus = "true"
+            date = {responseA.dateOfCreate}
+            level = {responseA.level}
             />
         </div>
     )
