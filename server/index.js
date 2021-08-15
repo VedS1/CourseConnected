@@ -16,7 +16,7 @@ app.use(cors());
 
 var popularLimit = 20;
 
-app.post("/unitAdd", async (req, res)=>{
+app.put("/unitAdd", async (req, res)=>{
     const _id = req.body._id;
     const newUnit = req.body.unit;
     try
