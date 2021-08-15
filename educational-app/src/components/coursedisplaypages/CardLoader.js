@@ -19,11 +19,12 @@ const CardLoader = ({ idList }) => {
     })};
 
     const updateBookmarks = (id) =>{
-        console.log(bookmarklist)
-        console.log(id)
         axios.put("http://localhost:3001/bStatus", {
             bookmarked:bookmarklist,
             _id : id,
+        }).then(response=>{
+            console.log("daghdhghashhsdg")
+            console.log(response);
         })};
 
     const clickedBookmark = (id) => {

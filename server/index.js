@@ -17,22 +17,23 @@ app.use(cors());
 var popularLimit = 20;
 
 app.put("/bStatus", async (req, res)=>{ // fetching data from frontend
-    const newBookmarked = req.body.bookmarked;
+
+ //   res.send(req.body.bookmarked)
+   // const newBookmarked = req.body.bookmarked;
     const _id = req.body._id;
 
     try
     {
-        UserModel.findById(_id, (err, newBookmarkedUser)=>{
-            console.log("sgfsd");
-            newBookmarkedUser.bookmarked = newBookmarked;
-     //       console.log(newBookmarkedUser)
-            newBookmarkedUser.save();   
-
-            res.send("finished")
-        })
+        await UserModel.findById(_iq, (err, newBookmarkedUser)=>{
+        console.log("sgfsd");
+        newBookmarkedUser.bookmarked = ["61175bb89b28e61aec1d7745"]
+        newBookmarkedUser.save();
+        console.log(newBookmarkedUser.bookmarked);
+         res.send("finished")
+        });
     }catch(err){
-        //console.log(err);
-}
+        //console.log(err); 
+    }
 })
 
 
