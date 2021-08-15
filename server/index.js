@@ -16,6 +16,21 @@ app.use(cors());
 
 var popularLimit = 20;
 
+app.post("/unitAdd", async (req, res)=>{
+    const _id = req.body._id;
+    const newUnit = req.body.unit;
+    try
+    {
+        await CourseModel.findById(_id, (err, newUnit)=>{
+        newUnit.unit = newUnit;
+        newUnit.save();
+        });
+    }catch(err){
+        //console.log(err); 
+    }
+})
+
+
 app.put("/rStatus", async (req, res)=>{ // fetching data from frontend
 
     const newRating = req.body.rating;
