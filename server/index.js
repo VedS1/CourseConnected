@@ -7,6 +7,13 @@ const app = express();
 const CourseModel = require("./models/Course");
 const UserModel = require("./models/User")
 
+
+//CourseModel.find().sort({"rating": -1});
+
+CourseModel.find().sort({"rating": -1}).limit(20).exec(function (err, member) {
+    console.log(member);
+  })
+
 app.use(express.json());
 app.use(cors());
 
@@ -24,6 +31,11 @@ app.post('/bookmark', async (req, res) =>{
     })
 })
 
+app.post('/popular', async (req, res) =>{
+    UserModel.findById(_id, (err, result)=>{
+        res.send(result);       
+    })
+})
 app.post('/register', async (req, res) =>{//authenticating and fetching user login from frontend
     const username = req.body.username;
     const password = req.body.password;
@@ -47,7 +59,7 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
     }
 });
 
-app.post("/login", async (req, res) =>{  //check if an account exists
+app.get("/login", async (req, res) =>{  //check if an account exists
     const email = req.body.email;
     const password = req.body.password;
     console.log(email)
