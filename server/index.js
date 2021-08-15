@@ -156,6 +156,7 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
 
 
 app.post("/insert", async (req, res)=>{ // fetching data from frontend
+    const imgURL = req.body.imgURL;
     const title = req.body.title; 
     const subject = req.body. subject; 
     const  author = req.body.author;
@@ -163,7 +164,7 @@ app.post("/insert", async (req, res)=>{ // fetching data from frontend
     const  level = req.body. level;
     const dateOfCreate =  req.body.dateOfCreate;
     const unit = req.body.unit;
-    const course = new CourseModel({title: title, subject: subject, author: author, description:description, level: level, dateOfCreate:dateOfCreate, unit: unit});
+    const course = new CourseModel({title: title, subject: subject, author: author, description:description, level: level, dateOfCreate:dateOfCreate, unit: unit, imgURL:imgURL});
     try
     {
         await course.save();
