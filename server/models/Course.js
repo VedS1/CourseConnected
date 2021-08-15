@@ -29,6 +29,10 @@ const CourseSchema = new mongoose.Schema({
        type: String,
        required: false,
    },
+   imgURL :{
+       type: String,
+       required: false
+   },
    unit: {
        type: Array, Object,
        required: false,
