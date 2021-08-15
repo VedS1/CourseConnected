@@ -3,10 +3,10 @@ const moongose = require ("mongoose");
 const cors = require('cors');
 const app = express();
 
-var popularLimit = 20;
 
 const CourseModel = require("./models/Course");
 const UserModel = require("./models/User")
+
 app.use(express.json());
 app.use(cors());
 
@@ -14,7 +14,24 @@ app.use(cors());
 
 
 
+var popularLimit = 20;
 
+app.post("/login", async (req, res) =>{  //check if an account exists
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(email)
+    console.log(password)
+    UserModel.find({email: email, password: password}, (err, result)=>{
+        if(err){
+            res.send(err);
+        }
+        if(result){
+        res.send(result);}
+        else{   
+            res.send("Wrong information")
+        }
+    })
+})
 
 
 
@@ -76,22 +93,6 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
     }
 });
 
-app.get("/login", async (req, res) =>{  //check if an account exists
-    const email = req.body.email;
-    const password = req.body.password;
-    console.log(email)
-    console.log(password)
-    UserModel.find({email: email, password: password}, (err, result)=>{
-        if(err){
-            res.send(err);
-        }
-        if(result){
-        res.send(result);}
-        else{
-            res.send("Wrong information")
-        }
-    })
-})
 
 
 app.post("/insert", async (req, res)=>{ // fetching data from frontend
