@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import "./MenuBar.css"
 
-const MenuBar = ({ link1,link2,link3 }) => {
+const MenuBar = ({ link1,link2,link3,link4 }) => {
     let history = useHistory();
     const loginClick = () => {history.push("/login")}
     const registerClick = () => {history.push("/registration")}
@@ -17,6 +17,7 @@ const MenuBar = ({ link1,link2,link3 }) => {
             <a className="popularCourses" style={link1 ? (bold) : (normal)} href="/popular-courses">Popular Courses</a>
             <a className="bookmarkedCourses"    style={link2 ? (bold) : (normal)} href="/bookmarked">Bookmarked Courses</a>
             <a className="yourCourses" style={link3 ? (bold) : (normal)} href="/your-courses">Your Courses</a>
+            <a className="yourCourses" style={link4 ? (bold) : (normal)} href="/course-creation">Course Creation</a>
             </div>
             
             <div className='rightSide'>
