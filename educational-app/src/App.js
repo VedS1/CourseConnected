@@ -30,7 +30,6 @@ return(
 
     <Route exact path="/your-courses">
       <YourCards/>
-      <MenuCard />
     </Route>
 
     <Route exact path="/popular-courses">
