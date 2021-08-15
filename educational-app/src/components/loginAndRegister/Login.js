@@ -30,6 +30,9 @@ const Login = () => {
         });};
     return (
         <div>
+            <a href="/">
+                <img className="logo"  src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" alt="logo" />
+            </a>
             <h1>Login</h1>
             <form className='add-form' onSubmit={loginUser}>
                 <div className='form-control'>
