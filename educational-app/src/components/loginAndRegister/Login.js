@@ -9,6 +9,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const loginUser = (event) =>{
+        console.log("sdf")
         event.preventDefault();
         axios.post("http://localhost:3001/login", {
             password:password,
@@ -17,11 +18,13 @@ const Login = () => {
         .then(response => {
            if(response.data.length==0)
            {
+               console.log("sdgfsdg")
 
             history.push("/login-failed")
                 
            }
            else{
+            console.log("dasf")
             const id = response.data.shift();
             console.log(id._id)
             window.localStorage.setItem('token', id._id);
