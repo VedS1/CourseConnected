@@ -3,22 +3,41 @@ const moongose = require ("mongoose");
 const cors = require('cors');
 const app = express();
 
+var popularLimit = 20;
 
 const CourseModel = require("./models/Course");
 const UserModel = require("./models/User")
+app.use(express.json());
+app.use(cors());
+
+
+
+
+
+
+
+
+
+
+app.get('/fullDB', async (req, res)=>{
+    CourseModel.find().exec(function(err, member){
+        res.send(member);
+    });
+})
+
 
 
 //CourseModel.find().sort({"rating": -1});
 app.get('/popular', async (req, res)=>{
-    CourseModel.find().sort({"rating": -1}).limit(20).exec(function (err, member) {
+    CourseModel.find().sort({"rating": -1}).limit(popularLimit).exec(function (err, member) {
+        console.log(err);
+        console.log(member);
         res.send(member);
       })
 
 })
 
 
-app.use(express.json());
-app.use(cors());
 
 app.post('/courseData', async (req, res) =>{
     const _id = req.body._id;

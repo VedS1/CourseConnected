@@ -7,10 +7,12 @@ import { useState } from "react"
 const BookmarkedCards = () => {
 
     const readPopular = () =>{
-         axios.post("http://localhost:3001/popular", {
-    }).then(response=>{
-        setIdlist(response)
+         axios.get("http://localhost:3001/popular", {
+    }).then(response => { 
         console.log(response)
+    })
+    .catch(error => {
+        console.log(error.response)
     })};
 
     const [idlist, setIdlist] = useState([])
