@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import "./MenuCard.css"
 
 const MenuCard = ({ id, date, level, imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
-
     return (
         <div className="fullCard">
             <div className="mainImage">

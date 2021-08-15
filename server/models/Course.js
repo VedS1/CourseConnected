@@ -4,6 +4,11 @@ const CourseSchema = new mongoose.Schema({
     rating:{
         type: Number,
         required: false,
+        default:0,
+    },
+    rates:{
+        type: Array,
+        required: false,
     },
    title: {
        type: String,
