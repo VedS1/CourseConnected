@@ -12,7 +12,7 @@ const Dashboard = () => {
             <div>
                 <div className="topPartDashboard">
                     <div className="welcomeToApp">
-                        Welcome to appName
+                        Welcome to CourseConnected
                     </div>
                 </div>
                 <div className="middlePartDashboard">
