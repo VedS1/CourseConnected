@@ -37,33 +37,33 @@ button {
 .bottomTop {
   display: flex;
   flex-direction: row;
-  height: 40%;
+  height: 55%;
   width: 100%;
 }
 
 .leftMiddle {
   display: flex;
   flex-direction: column;
-  width: 28%;
+  width: 22.5%;
   height: 100%;
 }
 
 .middleMiddle {
   display: flex;
   flex-direction: column;
-  width: 44%;
+  width: 55%;
   height: 100%;
 }
 
 .rightMiddle {
   display: flex;
   flex-direction: column;
-  width: 28%;
+  width: 22.5%;
   height: 100%;
 }
 
 .bottomBottom {
-  height: 60%;
+  height: 40%;
   width: 100%;
 }
 
