@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import "./Register.css"
 
 const Login = () => {
     //States
@@ -29,31 +30,37 @@ const Login = () => {
         });};
 
     return (
-        <div>
-            <a href="/">
-                <img className="logo"  src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" alt="logo" />
-            </a>
-            <h1>Register</h1>
-            <form className='add-form' onSubmit={registerUser}>
-                <div className='form-control'>
-                <label>Name</label>
-                    <input type='text' placeholder = 'Add Full Name' value={name} onChange={(e) => setName(e.target.value)}/>
+        <div className="wholeRegisterPage">
+            <div className="title-container-register">
+                <div className="titleRegister">Welcome! Please register to gain access to our services</div>
+            </div>
+            <div className='middleRegister'>
+                <div className="leftSideRegister">
+                    <form className='add-form' onSubmit={registerUser}>
+                        <div className="name-fieldRegister">
+                            <label className="nameRegister">Name: </label>
+                            <input className="name-enterRegister" type='text' placeholder = 'Add full name' value={name} onChange={(e) => setName(e.target.value)}/>
+                        </div>
+                        <div className='email-fieldRegister'>
+                            <label className="emailRegister">Email: </label>
+                            <input className="email-enterRegister" type='text' placeholder = 'Add email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        </div>
+                        <div className='password-fieldRegister'>
+                            <label className="passwordRegister">Password: </label>
+                            <input className="password-enterRegister" type='password' placeholder = 'Add password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        </div>
+                        <div className="registerSubmitRegister"><input type = 'submit' value =  'REGISTER' className='registerButtonRegister'></input></div>
+                    </form>
+                    <div className="redirectToLoginRegister">
+                        Have an account already? 
+                        <a className="registerHereRedirectButton" href="/login"> Login here  </a>
+                    </div>
                 </div>
-                <div className='form-control'>
-                    <label>Email</label>
-                    <input type='text' placeholder = 'Add Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <div className="rightSideRegister">
+                    <div className="imageRegisterContainer">
+                        <img src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" className="imageRegister" alt="logo" />
+                    </div>
                 </div>
-                <div className='form-control'>
-                    <label>Password</label>
-                    <input type='password' placeholder = 'Add Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-                <input type = 'submit' value =  'Register' className='btn btn-block'></input>
-            </form>
-            <div>
-                <p>
-                    Have an account already? 
-                    <a href="/login">Login here</a>
-                </p>
             </div>
         </div>
     )

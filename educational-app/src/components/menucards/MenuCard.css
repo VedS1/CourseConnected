@@ -23,7 +23,7 @@ button {
   width: 100%;
 }
 
-.image {
+.imageMenuCard {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -98,7 +98,7 @@ button {
   text-align: center;
 }
 
-.author {
+.authorMenuCard {
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
   height: 25%;
@@ -106,7 +106,7 @@ button {
   text-align: center;
 }
 
-.date {
+.dateMenuCard {
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
   height: 22.5%;

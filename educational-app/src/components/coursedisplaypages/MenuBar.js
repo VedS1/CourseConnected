@@ -41,7 +41,7 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
 
     return (
         <div className='menubar'>
-            <div className='leftSide'>
+            <div className='leftSideMenuBar'>
             <a href="/">
                 <img className="logo"  src="https://cdn.discordapp.com/attachments/875928959920005168/876262151214489630/logo.png" alt="logo" />
             </a>
@@ -51,12 +51,12 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
             <a className="yourCourses" style={link4 ? (bold) : (normal)} href="/course-creation">Course Creation</a>
             </div>
             
-            <div className='rightSide'>
+            <div className='rightSideMenuBar'>
             <img className="searchIcon" src="https://cdn.discordapp.com/attachments/875928959920005168/876289495476076544/search.png" alt="search icon" />
             <input className="search" type="text" name="" placeholder="  Search..."/>
-            <a className="login" style = {buttonstyle} onClick={loginstatus ? {} : (loginClick)}>{loginstatus ? "" : "Login"}</a>
-            <a className="register" style = {buttonstyle} onClick={loginstatus ? {} : (registerClick)}>{loginstatus ? "" : "Register"}</a>
-            <a className="register" style = {buttonstyle} onClick={loginstatus ? (deleteToken) : {}}>{loginstatus ? (username) : ("")}</a>
+            <a className="loginMenuBar" style = {buttonstyle} onClick={loginstatus ? {} : (loginClick)}>{loginstatus ? "" : "Login"}</a>
+            <a className="registerMenuBar" style = {buttonstyle} onClick={loginstatus ? {} : (registerClick)}>{loginstatus ? "" : "Register"}</a>
+            <a className="registerMenuBar" style = {buttonstyle} onClick={loginstatus ? (deleteToken) : {}}>{loginstatus ? (username) : ("")}</a>
 
             </div>
         </div>
