@@ -31,10 +31,7 @@ const ChapterAddPage = ({units, setUnits, addPageUnit, addMenu, setAddMenu}) => 
             tempContents[addPageUnit].contents = tempArray;
             const finalArray = tempContents;
 
-            axios.post("http://localhost:3000/courseList/1", finalArray)
-                .then(response => {
                     setUnits(finalArray);
-                })
         }
     }, [sentToServerObject])
 
