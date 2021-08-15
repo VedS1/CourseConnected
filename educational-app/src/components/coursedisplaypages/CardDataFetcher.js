@@ -48,7 +48,7 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
     }
 
     return (
-        <div>
+        <div className="MenuCardWrapper">
             <MenuCard
             id = {id}
             imageURL = {responseA.imgURL}
