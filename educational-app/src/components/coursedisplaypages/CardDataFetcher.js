@@ -1,4 +1,5 @@
 import MenuCard from "../menucards/MenuCard"
+import axios from "axios";
 
 const CardDataFetcher = ( {id} ) => {
     
