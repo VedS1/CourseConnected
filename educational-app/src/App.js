@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom'
 import BookmarkedCards from './components/coursedisplaypages/BookmarkedCards';
 import YourCards from './components/coursedisplaypages/YourCards';
+import PopularCards from './components/coursedisplaypages/PopularCards';
 
 //returns id when on url/page/id (Ask Aryan if you don't understand)
 const Page = () => {
@@ -31,7 +32,7 @@ return(
     </Route>
 
     <Route exact path="/popular-courses">
-      <h1>POPULAR COURSES GOES HERE</h1>
+      <PopularCards/>
     </Route>
 
     <Route exact path="/bookmarked">
