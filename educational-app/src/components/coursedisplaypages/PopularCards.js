@@ -3,8 +3,10 @@ import CardLoader from "./CardLoader"
 import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
+import { useHistory } from "react-router";
 
 const BookmarkedCards = () => {
+    let history = useHistory();
 
     const readPopular = () =>{
          axios.post("http://localhost:3001/popular", {
@@ -16,6 +18,11 @@ const BookmarkedCards = () => {
     const [idlist, setIdlist] = useState([])
 
     useEffect(() => {
+        const userToken = window.localStorage.getItem("token")
+        if (userToken == null) {
+            history.push("/login")
+        }
+        
         readPopular()
     }, [])
     

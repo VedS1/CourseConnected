@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
 import MenuBar from "./MenuBar";
+import { useHistory } from "react-router";
 
 const CourseCreationPage = () => {
     //States
@@ -12,6 +13,14 @@ const CourseCreationPage = () => {
     const [dateOfCreate, setDateOfCreate] = useState("");
     const [imageurl, setImageurl] = useState("");
     
+    let history = useHistory();
+    useEffect(() => {
+        
+        const userToken = window.localStorage.getItem("token")
+        if (userToken == null) {
+            history.push("/login")
+        }
+    }, [])
 
     useEffect(()=>{
         axios.get("http://localhost:3001/read").then((response)=>{
