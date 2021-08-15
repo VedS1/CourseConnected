@@ -28,6 +28,7 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
     return (
         <div>
             <MenuCard
+            id = {id}
             imageURL = {responseA.imgURL}
             rating = {responseA.rating}
             title = {responseA.title}

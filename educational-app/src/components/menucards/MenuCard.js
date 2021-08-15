@@ -5,13 +5,13 @@ import Bookmark from './Bookmark'
 import { useState, useEffect } from 'react';
 import "./MenuCard.css"
 
-const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
+const MenuCard = ({ id, date, level, imageURL, rating, upvote, downvote , title, author, text, bookmarkStatus, onBookmarkClick }) => {
 
     return (
         <div className="fullCard">
-            <div className="mainImage">
+            <a href={"/page/" + id}><div className="mainImage">
                 <img className="imageMenuCard" src={imageURL}/>
-            </div>
+            </div></a>
             <div className="bottomHalf">
                 <div className="bottomTop">
                     <div className="leftMiddle">
