@@ -10,7 +10,7 @@ const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, aut
     return (
         <div className="fullCard">
             <div className="mainImage">
-                <img className="image" src={imageURL}/>
+                <img className="imageMenuCard" src={imageURL}/>
             </div>
             <div className="bottomHalf">
                 <div className="bottomTop">
@@ -29,10 +29,10 @@ const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, aut
                         <div className="title">
                             {title}
                         </div>
-                        <div className="author">
+                        <div className="authorMenuCard">
                             by {author}
                         </div>
-                        <div className="date">
+                        <div className="dateMenuCard">
                             {date}
                         </div>
                         <div className="level">
