@@ -41,7 +41,7 @@ const CourseSchema = new mongoose.Schema({
 });
 
 
+cDb= mongoose.createConnection("mongodb+srv://EduDefault:OnlyLetters@eduapp.zoxor.mongodb.net/course?retryWrites=true&w=majority", {useNewUrlParser:true});
 
-
-const Course = mongoose.model("Course", CourseSchema);
+const Course = cDb.model("Course", CourseSchema);
 module.exports = Course;

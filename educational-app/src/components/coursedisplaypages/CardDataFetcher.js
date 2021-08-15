@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 const CardDataFetcher = ( {id} ) => {
     
-    const fetchCourses = (paramID) =>{
-        const userToken = "6117d45fddd46336c44f80eb"//PLUG IN YOUR course ids here
+    const fetchCourses = (paramID) =>{  
+        const userToken = paramID//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {
              _id: userToken,
     }).then(response=>{
