@@ -84,7 +84,7 @@ const CourseCreationPage = () => {
                 </div>
                 <div className='form-control'>
                     <label>Cover Image URL </label>
-                    <input type='text' placeholder = 'Add Image URL' value={description} onChange={(e) => setImageurl(e.target.value)}/>
+                    <input type='text' placeholder = 'Add Image URL' value={imageurl} onChange={(e) => setImageurl(e.target.value)}/>
                 </div>
                 <div className='form-control'>
                     <label>Level </label>
