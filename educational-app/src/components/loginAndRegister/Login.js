@@ -23,7 +23,6 @@ const Login = () => {
            }
            else{
             const id = response.data.shift();
-            console.log(id._id)
             window.localStorage.setItem('token', id._id);
             history.push("/your-courses")
            }
@@ -40,7 +39,7 @@ const Login = () => {
                     <label>Password</label>
                     <input type='password' placeholder = 'Add Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
-                <input type = 'submit' value =  'Save Task' className='btn btn-block'></input>
+                <input type = 'submit' value =  'Login' className='btn btn-block'></input>
             </form>
             <div>
                 <p>

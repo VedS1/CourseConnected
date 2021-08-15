@@ -7,15 +7,54 @@ const app = express();
 const CourseModel = require("./models/Course");
 const UserModel = require("./models/User")
 
-
-//CourseModel.find().sort({"rating": -1});
-
-CourseModel.find().sort({"rating": -1}).limit(20).exec(function (err, member) {
-    console.log(member);
-  })
-
 app.use(express.json());
 app.use(cors());
+
+
+
+
+
+var popularLimit = 20;
+
+app.post("/login", async (req, res) =>{  //check if an account exists
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(email)
+    console.log(password)
+    UserModel.find({email: email, password: password}, (err, result)=>{
+        if(err){
+            res.send(err);
+        }
+        if(result){
+        res.send(result);}
+        else{   
+            res.send("Wrong information")
+        }
+    })
+})
+
+
+
+
+app.get('/fullDB', async (req, res)=>{
+    CourseModel.find().exec(function(err, member){
+        res.send(member);
+    });
+})
+
+
+
+//CourseModel.find().sort({"rating": -1});
+app.get('/popular', async (req, res)=>{
+    CourseModel.find().sort({"rating": -1}).limit(popularLimit).exec(function (err, member) {
+        console.log(err);
+        console.log(member);
+        res.send(member);
+      })
+
+})
+
+
 
 app.post('/courseData', async (req, res) =>{
     const _id = req.body._id;
@@ -31,11 +70,6 @@ app.post('/bookmark', async (req, res) =>{
     })
 })
 
-app.post('/popular', async (req, res) =>{
-    UserModel.findById(_id, (err, result)=>{
-        res.send(result);       
-    })
-})
 app.post('/register', async (req, res) =>{//authenticating and fetching user login from frontend
     const username = req.body.username;
     const password = req.body.password;
@@ -59,22 +93,6 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
     }
 });
 
-app.get("/login", async (req, res) =>{  //check if an account exists
-    const email = req.body.email;
-    const password = req.body.password;
-    console.log(email)
-    console.log(password)
-    UserModel.find({email: email, password: password}, (err, result)=>{
-        if(err){
-            res.send(err);
-        }
-        if(result){
-        res.send(result);}
-        else{
-            res.send("Wrong information")
-        }
-    })
-})
 
 
 app.post("/insert", async (req, res)=>{ // fetching data from frontend

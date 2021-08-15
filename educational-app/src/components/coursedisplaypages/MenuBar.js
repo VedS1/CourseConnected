@@ -1,4 +1,7 @@
 import { useHistory } from "react-router-dom";
+import axios from "axios"
+import { useState } from "react"
+import { useEffect } from "react"
 import "./MenuBar.css"
 
 const MenuBar = ({ link1,link2,link3,link4 }) => {
@@ -9,6 +12,32 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
     const bold = {fontWeight: "bold"}
     const normal = {fontWeight: "normal"}
     const buttonstyle =  {cursor:"pointer"}
+
+    const [username, setUsername] = useState([])
+    const [loginstatus, setLoginstatus] = useState(true)
+
+
+    const fetchBookmarks = () =>{
+        const userToken = window.localStorage.getItem("token")
+         axios.post("http://localhost:3001/bookmark", {
+             _id: userToken,
+    }).then(response=>{
+        setUsername(response.data.username)
+    })};
+
+    const deleteToken = () => {
+        window.localStorage.removeItem('token');
+        history.push("/login")
+    }
+
+    useEffect(() => {
+        fetchBookmarks()
+
+        const userToken = window.localStorage.getItem("token")
+        if (userToken == null) {
+           setLoginstatus(false)
+        }
+    }, [])
 
     return (
         <div className='menubar'>
@@ -25,8 +54,11 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
             <div className='rightSide'>
             <img className="searchIcon" src="https://cdn.discordapp.com/attachments/875928959920005168/876289495476076544/search.png" alt="search icon" />
             <input className="search" type="text" name="" placeholder="  Search..."/>
-            <a className="login" style = {buttonstyle} onClick={loginClick}>Login</a>
-            <a className="register" style = {buttonstyle} onClick={registerClick}>Register</a>
+            <a className="login" style = {buttonstyle} onClick={loginstatus ? {} : (loginClick)}>{loginstatus ? "" : "Login"}</a>
+            <a className="register" style = {buttonstyle} onClick={loginstatus ? {} : (registerClick)}>{loginstatus ? "" : "Register"}</a>
+            <text className="register">{loginstatus ? (username) : ("")}</text>
+            <a className="register" style = {buttonstyle} onClick={loginstatus ? (deleteToken) : {}}>{loginstatus ? "Logout" : ("")}</a>
+
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
 import MenuBar from "./MenuBar";
+import { useHistory } from "react-router";
 
 const CourseCreationPage = () => {
     //States
@@ -10,7 +11,16 @@ const CourseCreationPage = () => {
     const [description, setDescription] = useState("");
     const [level, setLevel] = useState(5);
     const [dateOfCreate, setDateOfCreate] = useState("");
+    const [imageurl, setImageurl] = useState("");
     
+    let history = useHistory();
+    useEffect(() => {
+        
+        const userToken = window.localStorage.getItem("token")
+        if (userToken == null) {
+            history.push("/login")
+        }
+    }, [])
 
     useEffect(()=>{
         axios.get("http://localhost:3001/read").then((response)=>{
@@ -40,6 +50,7 @@ const CourseCreationPage = () => {
             description: description,
             level: level,
             dateOfCreate: dateOfCreate,
+            imgURL: imageurl,
           //  unit: {unitOne, unitTwo},
         }
         )
@@ -56,27 +67,31 @@ const CourseCreationPage = () => {
             <h1>Course Creation</h1>
             <form className='add-form' onSubmit={addToDB}>
                 <div className='form-control'>
-                    <label>Title</label>
+                    <label>Title </label>
                     <input type='text' placeholder = 'Add Title' value={title} onChange={(e) => setTitle(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Subject</label>
+                    <label>Subject </label>
                     <input type='text' placeholder = 'Add Subject' value={subject} onChange={(e) => setSubject(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Author</label>
+                    <label>Author </label>
                     <input type='text' placeholder = 'Add Author' value={author} onChange={(e) => setAuthor(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Description</label>
+                    <label>Description </label>
                     <input type='text' placeholder = 'Add Description' value={description} onChange={(e) => setDescription(e.target.value)}/>
                 </div>
                 <div className='form-control'>
-                    <label>Level</label>
+                    <label>Cover Image URL </label>
+                    <input type='text' placeholder = 'Add Image URL' value={description} onChange={(e) => setImageurl(e.target.value)}/>
+                </div>
+                <div className='form-control'>
+                    <label>Level </label>
                     <input type='range' min = "1" max = "5" onChange={(e) => setLevel(e.target.value) }/>
                 </div>
                 <div className='form-control'>
-                    <label>Description</label>
+                    <label>Description </label>
                     <input type="date" id="dateselect" name="dateselect" onChange={(e) => setDateOfCreate(e.target.value) }/>
                 </div>
              

@@ -3,8 +3,11 @@ import CardLoader from "./CardLoader"
 import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
+import { useHistory } from "react-router";
 
 const BookmarkedCards = () => {
+    let history = useHistory();
+    
     const [idlist, setIdlist] = useState([])
 
     const fetchBookmarks = () =>{
@@ -16,6 +19,11 @@ const BookmarkedCards = () => {
     })};
 
     useEffect(() => {
+        const userToken = window.localStorage.getItem("token")
+        if (userToken == null) {
+            history.push("/login")
+        }
+        
         fetchBookmarks()
     }, [])
     
