@@ -9,6 +9,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const loginUser = (event) =>{
+        event.preventDefault();
         axios.post("http://localhost:3001/login", {
             password:password,
             email: email,
@@ -22,7 +23,8 @@ const Login = () => {
            }
            else{
             const id = response.data.shift();
-            window.localStorage.setItem('token', JSON.stringify(id._id));
+            console.log(id._id)
+            window.localStorage.setItem('token', id._id);
             history.push("/your-courses")
            }
         });};

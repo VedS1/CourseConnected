@@ -12,6 +12,7 @@ const Login = () => {
 
 
     const registerUser = (event) =>{
+        event.preventDefault();
         axios.post("http://localhost:3001/register", {
             username: name,
             password:password,

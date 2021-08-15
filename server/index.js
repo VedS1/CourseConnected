@@ -10,6 +10,14 @@ const UserModel = require("./models/User")
 app.use(express.json());
 app.use(cors());
 
+app.post('/bookmark', async (req, res) =>{
+    const _id = req.body._id;
+    console.log(_id)
+    UserModel.findById(_id, (err, result)=>{
+        res.send(result); 
+    })
+})
+
 app.post('/register', async (req, res) =>{//authenticating and fetching user login from frontend
     const username = req.body.username;
     const password = req.body.password;
