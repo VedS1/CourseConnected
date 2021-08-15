@@ -8,7 +8,17 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
     
     const [responseA, setResponseA] = useState([])
     const [rateList, setRateList] = useState([])
+    const [numRates, setNumRates] = useState(0)
     const userstoken = window.localStorage.getItem("token")
+
+    const updateRating = (Tid, myrating, myrates) =>{
+        axios.put("http://localhost:3001/rStatus", {
+            rating: myrating,
+            rates: myrates,
+            _id : Tid,
+        }).then(response=>{
+            console.log(response);
+        })};
 
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
@@ -17,15 +27,14 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
     }).then(response=>{
         setResponseA(response.data);
         setRateList(response.data.rates)
+        setNumRates(response.data.rating)
     })};
 
     useEffect(() => {//fetch starting data
         fetchCourses(id)
     }, [])
 
-    const upvote = () => {
-        console.log("test")
-        console.log(rateList)
+    const upvote = () => {  
         if (rateList.includes(userstoken)){
             rateList.splice(rateList.indexOf(userstoken), 1)
         }
@@ -33,6 +42,9 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
         rateList.push(userstoken)
         }
         console.log(rateList)
+        setNumRates(rateList.length);
+        console.log(rateList.length)
+        updateRating(id, rateList.length, rateList)
     }
 
     return (
@@ -40,7 +52,7 @@ const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
             <MenuCard
             id = {id}
             imageURL = {responseA.imgURL}
-            rating = {responseA.rating}
+            rating = {numRates}
             title = {responseA.title}
             author = {responseA.author}
             text = {responseA.description}

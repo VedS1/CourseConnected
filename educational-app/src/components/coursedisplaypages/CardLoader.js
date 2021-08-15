@@ -3,18 +3,6 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 const CardLoader = ({ idList }) => {
-    
-   /*
-    const updateRating = (id) =>{
-        axios.put("http://localhost:3001/rStatus", {
-            rating: 0//PUT RATING HERE,
-            rates: //PUT RATES HERE
-            _id : id,
-        }).then(response=>{
-            console.log(response);
-        })};
-*/
-
 
     const [bookmarklist, setBookmarklist] = useState([])
 
