@@ -9,9 +9,9 @@ const MenuCard = ({ id, date, level, imageURL, rating, upvote, downvote , title,
 
     return (
         <div className="fullCard">
-            <a href={"/page/" + id}><div className="mainImage">
-                <img className="imageMenuCard" src={imageURL}/>
-            </div></a>
+            <div className="mainImage">
+            <a href={"/page/" + id}><img className="imageMenuCard" src={imageURL}/></a>
+            </div>
             <div className="bottomHalf">
                 <div className="bottomTop">
                     <div className="leftMiddle">
