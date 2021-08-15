@@ -1,6 +1,7 @@
 import CardDataFetcher from "./CardDataFetcher"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import "./CardLoader.css"
 
 const CardLoader = ({ idList }) => {
 

@@ -9,10 +9,11 @@ import AddText from './add-chapter-components/AddText'
 import AddImage from './add-chapter-components/AddImage'
 import axios from 'axios'
 
-const ChapterAddPage = ({units, setUnits, addPageUnit, addMenu, setAddMenu}) => {
+const ChapterAddPage = ({units, setUnits, addPageUnit, addMenu, setAddMenu, id_number}) => {
 
-    const [inputType, setInputType] = useState("placeholder")
-    const [sentToServerObject, setSentToServerObject] = useState({})
+    const [inputType, setInputType] = useState("placeholder");
+    const [sentToServerObject, setSentToServerObject] = useState({});
+    const id_number = id_number;
 
     const findInputType = (event) => {
         setInputType(event.currentTarget.value);
@@ -30,6 +31,12 @@ const ChapterAddPage = ({units, setUnits, addPageUnit, addMenu, setAddMenu}) => 
             let tempArray = tempContents[addPageUnit].contents.concat(sentToServerObject);
             tempContents[addPageUnit].contents = tempArray;
             const finalArray = tempContents;
+
+            axios.put("http://localhost:3001/unitAdd", {
+                unit: finalArray,
+                _id : id_number,
+            });
+
             setUnits([...finalArray]);
         }
     }, [sentToServerObject])
