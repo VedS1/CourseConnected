@@ -11,7 +11,7 @@ const CardDataFetcher = ( {id} ) => {
 
     const updateBookmarks = () =>{
         axios.post("http://localhost:3001/bStatus", {
-            bookmarked:bK,
+            bookmarked:bookmarkList,
         });
     }
     const fetchCourses = (paramID) =>{  
@@ -50,7 +50,8 @@ const CardDataFetcher = ( {id} ) => {
         else{
             bookmarkList.push(id);
         }
-        fetchBookmarks()
+        
+        //fetchBookmarks()
     }
 
     const test = () => {
