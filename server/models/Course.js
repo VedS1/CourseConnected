@@ -4,6 +4,7 @@ const CourseSchema = new mongoose.Schema({
     rating:{
         type: Number,
         required: false,
+        default: 0,
     },
    title: {
        type: String,
