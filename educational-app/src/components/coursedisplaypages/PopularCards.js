@@ -6,11 +6,14 @@ import { useState } from "react"
 
 const BookmarkedCards = () => {
 
-    const readPopular = (event) =>{
-        then(response => {
-            setIdlist(response)
-        })
-    }
+    const readPopular = () =>{
+         axios.post("http://localhost:3001/popular", {
+             _id: userToken,
+    }).then(response=>{
+        setIdlist(response)
+    })};
+
+
     const [idlist, setIdlist] = useState([])
 
     const fetchBookmarks = () =>{
