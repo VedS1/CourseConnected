@@ -13,7 +13,6 @@ const ChapterAddPage = ({units, setUnits, addPageUnit, addMenu, setAddMenu, id_n
 
     const [inputType, setInputType] = useState("placeholder");
     const [sentToServerObject, setSentToServerObject] = useState({});
-    const id_number = id_number;
 
     const findInputType = (event) => {
         setInputType(event.currentTarget.value);

@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import '../styling/graph-page.css'
+import '../styling/graph-page.css';
+import axios from 'axios'
 
 const UnitAddition = ({units, setUnits, id_number}) => {
     const [unitName, setUnitName] = useState('');
     const [tempUnitName, setTempUnitName] = useState('');
 
     const handleChange = (event) => {
-        tempUnitName = event.target.value;
+        setTempUnitName(event.target.value);
         console.log(tempUnitName);
     }
 
