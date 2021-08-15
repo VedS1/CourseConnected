@@ -24,7 +24,7 @@ return(
   <Router>
   
     <Route exact path="/">
-      <p>landing page</p>
+      <MenuCard></MenuCard>
     </Route>
 
     <Route exact path="/your-courses">
