@@ -18,18 +18,15 @@ var popularLimit = 20;
 
 app.put("/bStatus", async (req, res)=>{ // fetching data from frontend
 
- //   res.send(req.body.bookmarked)
-   // const newBookmarked = req.body.bookmarked;
+    const newBookmarked = req.body.bookmarked;
     const _id = req.body._id;
-
+    console.log(_id);
     try
     {
-        await UserModel.findById(_iq, (err, newBookmarkedUser)=>{
-        console.log("sgfsd");
-        newBookmarkedUser.bookmarked = ["61175bb89b28e61aec1d7745"]
+        await UserModel.findById(_id, (err, newBookmarkedUser)=>{
+        newBookmarkedUser.bookmarked = newBookmarked;
         newBookmarkedUser.save();
         console.log(newBookmarkedUser.bookmarked);
-         res.send("finished")
         });
     }catch(err){
         //console.log(err); 
