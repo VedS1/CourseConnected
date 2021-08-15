@@ -16,18 +16,38 @@ app.use(cors());
 
 var popularLimit = 20;
 
-app.post("/bStatus", async (req, res)=>{ // fetching data from frontend
-    const bookmarked = req.body.bookmarked;
-    console.log(bookmarked)
-    const user = new UserModel({bookmarked: bookmarked})
+
+app.put("/cStatus", async (req, res)=>{ // fetching data from frontend
+
+    const newCreated = req.body.created;
+    const _id = req.body._id;
+    console.log(_id);
     try
     {
-        console.log(user);
-        await user.save();
-        console.log("inserted data");
-
+        await UserModel.findById(_id, (err, newCreatedUser)=>{
+        newCreatedUser.created = newCreated;
+        newCreatedUser.save();
+        console.log(newCreatedUser.created);
+        });
     }catch(err){
-        //console.log(err);
+        //console.log(err); 
+    }
+})
+
+app.put("/bStatus", async (req, res)=>{ // fetching data from frontend
+
+    const newBookmarked = req.body.bookmarked;
+    const _id = req.body._id;
+    console.log(_id);
+    try
+    {
+        await UserModel.findById(_id, (err, newBookmarkedUser)=>{
+        newBookmarkedUser.bookmarked = newBookmarked;
+        newBookmarkedUser.save();
+        console.log(newBookmarkedUser.bookmarked);
+        });
+    }catch(err){
+        //console.log(err); 
     }
 })
 
@@ -36,7 +56,7 @@ app.post("/login", async (req, res) =>{  //check if an account exists
     const email = req.body.email;
     const password = req.body.password;
     UserModel.find({email: email, password: password}, (err, result)=>{
-        if(err){
+        if(err){    
             res.send(err);
         }
         if(result){
@@ -118,7 +138,7 @@ app.post("/insert", async (req, res)=>{ // fetching data from frontend
     try
     {
         await course.save();
-        res.send("inserted data");
+        res.send(course._id);
 
     }catch(err){
     }

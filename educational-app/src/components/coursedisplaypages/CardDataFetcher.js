@@ -2,17 +2,12 @@ import MenuCard from "../menucards/MenuCard"
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react"
+import BookmarkedCards from "./YourCards";
 
-const CardDataFetcher = ( {id} ) => {
+const CardDataFetcher = ( {id, bookmarkStatus, bookmarkClick} ) => {
+    
     const [responseA, setResponseA] = useState([])
-    const [bookmarkList, setBookmarkList] = useState([])
-    const [bookmarkStatus, setBookmarkStatus] = useState(false)
 
-    const updateBookmarks = () =>{
-        axios.post("http://localhost:3001/bStatus", {
-            bookmarked:bookmarkList,
-        }).then(response=>{
-        })};
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {
@@ -21,49 +16,11 @@ const CardDataFetcher = ( {id} ) => {
         setResponseA(response.data);
     })};
 
-    const fetchBookmarks = () =>{
-        const userToken = window.localStorage.getItem("token")
-         axios.post("http://localhost:3001/bookmark", {
-             _id: userToken,
-    }).then(response=>{
-        console.log(response.data.bookmarked)
-        setBookmarkList(response.data.bookmarked)
-    })};
-    
-    useEffect(() => {
-        fetchBookmarks()
+
+    useEffect(() => {//fetch starting data
         fetchCourses(id)
     }, [])
-    useEffect(() => {
-        if(bookmarkList.includes(id)){
-            setBookmarkStatus(true)
-        }
-        else{
-            setBookmarkStatus(false)
-        }
-    }, [bookmarkList])
 
-    const bookmark = () => {
-        if(bookmarkList.includes(id)){
-            console.log("one")
-            bookmarkList.splice(bookmarkList.indexOf(id), 1);
-            updateBookmarks();
-        }
-        else{
-            console.log("two")
-            bookmarkList.push(id);
-            updateBookmarks();
-        }
-        bookmarkUpdater()
-    }
-    const bookmarkUpdater = () => {
-        if(bookmarkList.includes(id)){
-            setBookmarkStatus(true)
-        }
-        else{
-            setBookmarkStatus(false)
-        }
-    }
     const test = () => {
         console.log("test")
     }
@@ -79,7 +36,7 @@ const CardDataFetcher = ( {id} ) => {
             bookmarkStatus = {bookmarkStatus}
             date = {responseA.dateOfCreate}
             level = {responseA.level}
-            onBookmarkClick = {bookmark}
+            onBookmarkClick = {bookmarkClick}
             upvote = {test}
             downvote = {test}
             />

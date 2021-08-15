@@ -12,6 +12,7 @@ const CourseCreationPage = () => {
     const [level, setLevel] = useState(5);
     const [dateOfCreate, setDateOfCreate] = useState("");
     const [imageurl, setImageurl] = useState("");
+    const [yourCourses, setYourCourses] = useState([])
     
     let history = useHistory();
     useEffect(() => {
@@ -23,10 +24,18 @@ const CourseCreationPage = () => {
     }, [])
 
     useEffect(()=>{
+        fetchBookmarks();
         axios.get("http://localhost:3001/read").then((response)=>{
-            console.log(response.data)
         }); 
     }, []);
+
+    const fetchBookmarks = () =>{
+        const userToken = window.localStorage.getItem("token")
+         axios.post("http://localhost:3001/bookmark", {
+             _id: userToken,
+    }).then(response=>{
+        setYourCourses(response.data.created)
+    })};
 
   //const editDB = ()=>{ //edits database WHEN YOU SPECIFIY THE ID
   //  );
@@ -41,7 +50,13 @@ const CourseCreationPage = () => {
    //     
    // )}, []);
     
-    const addToDB = (event) =>{
+   const updateCourses = (id, createdid) =>{
+    axios.put("http://localhost:3001/cStatus", {
+        created:createdid,
+        _id : id,
+    })}; 
+   
+   const addToDB = (event) =>{
         event.preventDefault();
         axios.post("http://localhost:3001/insert", {
             title: title,
@@ -55,8 +70,10 @@ const CourseCreationPage = () => {
         }
         )
         .then(response => {
-            console.log(response);
-            
+            console.log(response.data);
+            yourCourses.push(response.data)
+            updateCourses(window.localStorage.getItem("token"), yourCourses)
+            history.push("/your-courses")
         });};
 
 
