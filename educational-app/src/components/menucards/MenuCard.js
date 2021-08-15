@@ -24,6 +24,8 @@ const MenuCard = ({ date, level, imageURL, rating, upvote, downvote , title, aut
                 </div>
                 <h2>{title}</h2>
                 <h5>by {author}</h5>
+                <h5>created on {date}</h5>
+                <h5>level: {level}</h5>
                 <p>{text}</p>
             </div>
         </div>
