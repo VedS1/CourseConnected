@@ -56,8 +56,7 @@ const MenuBar = ({ link1,link2,link3,link4 }) => {
             <input className="search" type="text" name="" placeholder="  Search..."/>
             <a className="login" style = {buttonstyle} onClick={loginstatus ? {} : (loginClick)}>{loginstatus ? "" : "Login"}</a>
             <a className="register" style = {buttonstyle} onClick={loginstatus ? {} : (registerClick)}>{loginstatus ? "" : "Register"}</a>
-            <text className="register">{loginstatus ? (username) : ("")}</text>
-            <a className="register" style = {buttonstyle} onClick={loginstatus ? (deleteToken) : {}}>{loginstatus ? "Logout" : ("")}</a>
+            <a className="register" style = {buttonstyle} onClick={loginstatus ? (deleteToken) : {}}>{loginstatus ? (username) : ("")}</a>
 
             </div>
         </div>
