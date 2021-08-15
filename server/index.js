@@ -7,7 +7,7 @@ const app = express();
 const CourseModel = require("./models/Course");
 const UserModel = require("./models/User");
 
-app.use(express.json());
+app.use(express.json());    
 app.use(cors());
 
 
@@ -17,24 +17,24 @@ app.use(cors());
 var popularLimit = 20;
 
 app.post("/bStatus", async (req, res)=>{ // fetching data from frontend
-    const bokomarked = res.body.boomarked;
-    const user = new UserModel({boomarked :BookmarkedCards})
+    const bookmarked = req.body.bookmarked;
+    console.log(bookmarked)
+    const user = new UserModel({bookmarked: bookmarked})
     try
     {
+        console.log(user);
         await user.save();
-        res.send("inserted data");
+        console.log("inserted data");
 
     }catch(err){
-        console.log(err);
+        //console.log(err);
     }
-}); 
+})
 
 
 app.post("/login", async (req, res) =>{  //check if an account exists
     const email = req.body.email;
     const password = req.body.password;
-    console.log(email)
-    console.log(password)
     UserModel.find({email: email, password: password}, (err, result)=>{
         if(err){
             res.send(err);
@@ -61,8 +61,6 @@ app.get('/fullDB', async (req, res)=>{
 //CourseModel.find().sort({"rating": -1});
 app.get('/popular', async (req, res)=>{
     CourseModel.find().sort({"rating": -1}).limit(popularLimit).exec(function (err, member) {
-        console.log(err);
-        console.log(member);
         res.send(member);
       })
 
@@ -103,7 +101,6 @@ app.post('/register', async (req, res) =>{//authenticating and fetching user log
         await user.save();
         res.send("registered user");
     }catch(err){
-        console.log(err);
     }
 });
 
@@ -124,7 +121,6 @@ app.post("/insert", async (req, res)=>{ // fetching data from frontend
         res.send("inserted data");
 
     }catch(err){
-        console.log(err);
     }
 }); 
 
@@ -146,13 +142,12 @@ app.put("/update", async (req, res)=>{ // fetching data from frontend
  //  const  level = req.body. level;
  //  const dateOfCreate =  req.body.dateOfCreate;
  //  const unit = req.body.unit;
-    console.log("step 1");
     try
     {
         await CourseModel.findById(id, (err, newDBAddition)=>{
             if(err)
             {
-                console.log(err);
+//console.log(err);
             }
             newDBAddition.title = newTitle;
             newDBAddition.save();
@@ -160,10 +155,10 @@ app.put("/update", async (req, res)=>{ // fetching data from frontend
         });
 
     }catch(err){
-        console.log(err);
+       // console.log(err);
     }
 }); 
 
 app.listen(3001, ()=> {
-    console.log('Server up and running on 3001');
+  //  console.log('Server up and running on 3001');
 });

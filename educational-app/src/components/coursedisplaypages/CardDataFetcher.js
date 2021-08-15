@@ -5,15 +5,14 @@ import { useState } from "react"
 
 const CardDataFetcher = ( {id} ) => {
     const [responseA, setResponseA] = useState([])
-    const[bK, setbK] = useState([])
     const [bookmarkList, setBookmarkList] = useState([])
     const [bookmarkStatus, setBookmarkStatus] = useState(false)
 
     const updateBookmarks = () =>{
         axios.post("http://localhost:3001/bStatus", {
             bookmarked:bookmarkList,
-        });
-    }
+        }).then(response=>{
+        })};
     const fetchCourses = (paramID) =>{  
         const userToken = paramID//PLUG IN YOUR course ids here
          axios.post("http://localhost:3001/courseData", {
@@ -27,6 +26,7 @@ const CardDataFetcher = ( {id} ) => {
          axios.post("http://localhost:3001/bookmark", {
              _id: userToken,
     }).then(response=>{
+        console.log(response.data.bookmarked)
         setBookmarkList(response.data.bookmarked)
     })};
     
@@ -45,15 +45,25 @@ const CardDataFetcher = ( {id} ) => {
 
     const bookmark = () => {
         if(bookmarkList.includes(id)){
+            console.log("one")
             bookmarkList.splice(bookmarkList.indexOf(id), 1);
+            updateBookmarks();
         }
         else{
+            console.log("two")
             bookmarkList.push(id);
+            updateBookmarks();
         }
-        
-        //fetchBookmarks()
+        bookmarkUpdater()
     }
-
+    const bookmarkUpdater = () => {
+        if(bookmarkList.includes(id)){
+            setBookmarkStatus(true)
+        }
+        else{
+            setBookmarkStatus(false)
+        }
+    }
     const test = () => {
         console.log("test")
     }
