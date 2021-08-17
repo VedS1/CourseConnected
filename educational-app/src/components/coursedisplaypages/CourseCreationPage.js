@@ -13,6 +13,7 @@ const CourseCreationPage = () => {
     const [level, setLevel] = useState(5);
     const [dateOfCreate, setDateOfCreate] = useState("");
     const [imageurl, setImageurl] = useState("");
+    const [createBy, setCreateBy] = useState("");
     const [yourCourses, setYourCourses] = useState([])
     
     let history = useHistory();
@@ -59,6 +60,7 @@ const CourseCreationPage = () => {
    
    const addToDB = (event) =>{
         event.preventDefault();
+        setCreateBy(window.localStorage.getItem("token"));
         axios.post("http://localhost:3001/insert", {
             title: title,
             subject: subject,
@@ -67,7 +69,7 @@ const CourseCreationPage = () => {
             level: level,
             dateOfCreate: dateOfCreate,
             imgURL: imageurl,
-            createdBy:window.localStorage.getItem("token"),
+            createdBy: createBy,
         }
         )
         .then(response => {
