@@ -13,6 +13,7 @@ import BookmarkedCards from './components/coursedisplaypages/BookmarkedCards';
 import YourCards from './components/coursedisplaypages/YourCards';
 import PopularCards from './components/coursedisplaypages/PopularCards';
 import Dashboard from './components/coursedisplaypages/Dashboard';
+import Verification from './components/loginAndRegister/Verification';
 //returns id when on url/page/id (Ask Aryan if you don't understand)
 const Page = () => {
   const str = String(window.location.pathname).slice(6,)
@@ -58,6 +59,10 @@ return(
 
     <Route exact path="/registration-failed">
       <RegisterError/>
+    </Route>
+
+    <Route exact path="/verification">
+      <Verification/>
     </Route>
 
     <Route exact path="/page/:page_id">
