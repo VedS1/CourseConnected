@@ -41,8 +41,11 @@ const CourseSchema = new mongoose.Schema({
    unit: {
        type: Array, Object,
        required: false,
+   },
+   createdBy:{
+       type: String,
+       required: false
    }
-
 });
 
 

@@ -38,7 +38,7 @@ const Login = () => {
                     <form className='add-form' onSubmit={loginUser}>
                         <div className='email-fieldLogin'>
                             <label className="emailLogin">Email: </label>
-                            <input className="email-enterLogin" type='text' placeholder = 'Add email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input className="email-enterLogin" type='email' placeholder = 'Add email' value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </div>
                         <div className='password-fieldLogin'>
                             <label className="passwordLogin">Password: </label>

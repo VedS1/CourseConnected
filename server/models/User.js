@@ -23,6 +23,10 @@
    key:{
        type: String,
        required:false,
+   },
+   confirmed:{
+       type: Boolean,
+       required: false,
    }
    });
 

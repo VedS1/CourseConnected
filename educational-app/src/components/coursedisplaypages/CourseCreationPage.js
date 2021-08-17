@@ -67,6 +67,7 @@ const CourseCreationPage = () => {
             level: level,
             dateOfCreate: dateOfCreate,
             imgURL: imageurl,
+            createdBy:window.localStorage.getItem("token"),
         }
         )
         .then(response => {

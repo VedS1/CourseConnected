@@ -2,6 +2,17 @@ const express = require("express");
 const moongose = require ("mongoose");
 const cors = require('cors');
 const app = express();
+const nodemailer = require('nodemailer')
+const {google} = require('googleapis')
+
+const clientID = '220175093383-fre68bcsv8blhguh1taf81ik37vns0r4.apps.googleusercontent.com'
+const clientSecret = 'D0C9u6kjftl7qyeOkkEjdyx2'
+const redirectURI = 'https://developers.google.com/oauthplayground'
+const refreshToken = '1//04scnMubMdcZCCgYIARAAGAQSNgF-L9IrXUes_sG_82d9LAKb_wfOFCiLRqm0llfXros5NGmnMFWSBBla1GCJwMKAq2Cx_CJnog'
+
+const oAuth = new google.auth.OAuth2(clientID, clientSecret, redirectURI)
+
+oAuth.setCredentials({refresh_token: refreshToken})
 
 
 const CourseModel = require("./models/Course");
@@ -16,9 +27,28 @@ app.use(cors());
 
 var popularLimit = 20;
 
+
+
+
+
+
+async function sendEmail(){
+    try{
+        const accessToken = await oAuth.getAccessToken()
+        const transport = nodemailer.createTransport({service: 'gmail', auth: {type: 'OAuth2', user: 'courseconnected@gmail.com', clientId: clientID, clientSecret : clientSecret, refreshToken: refreshToken, accessToken: accessToken}});  
+        const options = {from: 'CourseConnected Auth <courseconnected@gmail.com>', to: 'aryanovalekar@gmail.com', subject: "Does this work", text: 'text version'};
+        const result = transport.sendMail(options);
+    }
+    catch (error){
+        return error
+    }
+}
+
+
+
 app.put("/unitAdd", async (req, res)=>{
     const _id = req.body._id;
-    const newUnit = req.body.unit;
+    const newUnit = req.body.unit;  
     try
     {
         await CourseModel.findById(_id, (err, newUnitCreation)=>{
@@ -163,7 +193,8 @@ app.post("/insert", async (req, res)=>{ // fetching data from frontend
     const  level = req.body. level;
     const dateOfCreate =  req.body.dateOfCreate;
     const unit = req.body.unit;
-    const course = new CourseModel({title: title, subject: subject, author: author, description:description, level: level, dateOfCreate:dateOfCreate, unit: unit, imgURL:imgURL});
+    const createdBy = req.body.createdBy;
+    const course = new CourseModel({title: title, subject: subject, author: author, description:description, level: level, dateOfCreate:dateOfCreate, unit: unit, imgURL:imgURL, createdBy: createdBy});
     try
     {
         await course.save();
