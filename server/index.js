@@ -21,12 +21,11 @@ app.put("/unitAdd", async (req, res)=>{
     const newUnit = req.body.unit;
     try
     {
-        await CourseModel.findById(_id, (err, newUnit)=>{
-        newUnit.unit = newUnit;
-        newUnit.save();
+        await CourseModel.findById(_id, (err, newUnitCreation)=>{
+        newUnitCreation.unit = newUnit;
+        newUnitCreation.save();
         });
     }catch(err){
-        //console.log(err); 
     }
 })
 

@@ -67,7 +67,6 @@ const CourseCreationPage = () => {
             level: level,
             dateOfCreate: dateOfCreate,
             imgURL: imageurl,
-          //  unit: {unitOne, unitTwo},
         }
         )
         .then(response => {
