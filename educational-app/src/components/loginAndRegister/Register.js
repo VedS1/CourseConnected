@@ -2,8 +2,8 @@ import axios from "axios"
 import { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import "./Register.css"
-
-const Login = () => {
+const Login = (props) => {
+    
     //States
     let history = useHistory();
 
@@ -11,6 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
 
+    
 
     const registerUser = (event) =>{
         event.preventDefault();
@@ -20,12 +21,12 @@ const Login = () => {
             email: email,
         })
         .then(response => {
-            if(response.data)
+            if(response.data==0)
             {
-                history.push("/login")
+                history.push("/registration-failed")
             }
             else{
-                history.push("/registration-failed")
+                history.push({pathname: "/Verification", state: response.data})
             }
         });};
 

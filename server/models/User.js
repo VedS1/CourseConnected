@@ -27,6 +27,10 @@
    confirmed:{
        type: Boolean,
        required: false,
+   },
+   verCode: {
+       type: String,
+       required: false,
    }
    });
 

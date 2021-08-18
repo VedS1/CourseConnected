@@ -5,6 +5,7 @@ const app = express();
 const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
 
+
 const clientID = '220175093383-fre68bcsv8blhguh1taf81ik37vns0r4.apps.googleusercontent.com'
 const clientSecret = 'D0C9u6kjftl7qyeOkkEjdyx2'
 const redirectURI = 'https://developers.google.com/oauthplayground'
@@ -28,15 +29,22 @@ app.use(cors());
 var popularLimit = 20;
 
 
+function badTokenGen(size){
+    var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
+    var b = [];  
+    for (var i=0; i<size; i++) {
+        var j = (Math.random() * (a.length-1)).toFixed(0);
+        b[i] = a[j];
+    }
+    return b.join("");
+}
 
 
-
-
-async function sendEmail(){
+const sendVerificationEmail = async (verificationToken, userEmail)=>{
     try{
         const accessToken = await oAuth.getAccessToken()
         const transport = nodemailer.createTransport({service: 'gmail', auth: {type: 'OAuth2', user: 'courseconnected@gmail.com', clientId: clientID, clientSecret : clientSecret, refreshToken: refreshToken, accessToken: accessToken}});  
-        const options = {from: 'CourseConnected Auth <courseconnected@gmail.com>', to: 'aryanovalekar@gmail.com', subject: "Does this work", text: 'text version'};
+        const options = {from: 'CourseConnected Auth <courseconnected@gmail.com>', to: userEmail, subject: "Verification Code", text: verificationToken};
         const result = transport.sendMail(options);
     }
     catch (error){
@@ -160,26 +168,34 @@ app.post('/bookmark', async (req, res) =>{
     })
 })
 
+
+
+app.post ('/signup', async(req, res) =>{
+    const user = req.body.user;
+    const user2 = new UserModel({user})
+    await user2.save();
+    res.send("registered user");
+})
+
 app.post('/register', async (req, res) =>{//authenticating and fetching user login from frontend
     const username = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
+    badToken = badTokenGen(5);
+    console.log(badToken);
     UserModel.find({email: email}, (err, result) =>{
         if(result==0)
         {
-            res.send(true)
+            var seconds =Math.floor(Date.now()/1000);
+            badToken+=seconds.toString(36);
+            sendVerificationEmail(badToken, email);
+            const user = new UserModel({username: username, password: password, email: email, verCode:badToken});
+            res.send({user})
         }
         else{
-            res.send(false)
+            res.send(0)
         }
     });
-    const user = new UserModel({username: username, password: password, email: email});
-    try
-    {
-        await user.save();
-        res.send("registered user");
-    }catch(err){
-    }
 });
 
 

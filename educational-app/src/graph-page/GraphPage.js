@@ -1,7 +1,7 @@
 // Import Statements
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router';
+//import { useHistory } from 'react-router';
 import ReactFlow, {
     removeElements,
     addEdge,
@@ -23,7 +23,7 @@ import UnitAddition from './components/UnitAddition'
 
 // Start of the Actual React App
 // Defined by the Functional Component GraphPage
-let history = useHistory();
+//let history = useHistory();
 
 const GraphPage = () => {
 
@@ -44,7 +44,7 @@ const GraphPage = () => {
         //Redirects if no token
         const userToken = window.localStorage.getItem("token")
         if (userToken == null) {
-            history.push("/login")
+         //   history.push("/login")
         }
 
 
