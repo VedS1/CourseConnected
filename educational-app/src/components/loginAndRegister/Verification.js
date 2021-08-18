@@ -13,15 +13,29 @@ const Verification = () => {
         var secondsElapsed = Math.floor(Date.now()/1000) - parseInt((location.state.user.verCode).substr(5,), 36);
         if(secondsElapsed<(60*5))
         {
-            console.log(location.state.user)
-            axios.post("http://localhost:3001/signup", {
+            if(location.state.user.verCode == verificationCode)
+            {
+               console.log(location.state.user)
+                axios.post("http://localhost:3001/signup", {
                 user:location.state.user,
-            })
+                })}
+            else
+            {
+                console.log("Incorrect Code")
+            }
         }
+       
         else{
-            console.log("Sorry, you took too long. ")
+            console.log("Sorry, your verification code has timed out.")
+            //button
+            //{
+                    history.push('/registration')
+            //}
         }
 
+    }
+    const resendVerification = (event) =>{
+        event.preventDefault();
     }
     
     return (
