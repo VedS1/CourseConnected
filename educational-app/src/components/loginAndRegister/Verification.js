@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import axios from 'axios'
 const Verification = () => {
     
     let location = useLocation();
+    let history = useHistory();
 
     const [verificationCode, setVerificationCode] = useState("");
 
@@ -18,7 +19,10 @@ const Verification = () => {
                console.log(location.state.user)
                 axios.post("http://localhost:3001/signup", {
                 user:location.state.user,
-                })}
+                })
+                history.push("/login")
+            }
+             
             else
             {
                 console.log("Incorrect Code")
@@ -27,10 +31,10 @@ const Verification = () => {
        
         else{
             console.log("Sorry, your verification code has timed out.")
-            //button
-            //{
-                    history.push('/registration')
-            //}
+
+            
+                    history.push("/registration")
+            
         }
 
     }
@@ -46,7 +50,7 @@ const Verification = () => {
             <form onSubmit={onSubmit}>
                 <div>
                     <label>Enter your code here: </label>
-                    <input className="password-enterRegister" type='password' placeholder = 'Add verification code' value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)}/>
+                    <input className="password-enterRegister" type='text' placeholder = 'Add verification code' value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)}/>
                 </div>
                 <input className="Verify" type = 'submit' value =  'Verify'></input>
             </form>
